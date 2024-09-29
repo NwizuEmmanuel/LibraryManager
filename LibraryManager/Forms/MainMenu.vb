@@ -1,6 +1,11 @@
 ﻿Imports System.ComponentModel
+Imports System.Configuration
+Imports System.Data.SqlClient
 
 Public Class MainMenu
+    Dim connectionString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
+    Dim table As New DataTable()
+
     Private Sub MainMenu_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Application.Exit()
     End Sub
@@ -35,5 +40,37 @@ Public Class MainMenu
 
     Private Sub BorrowsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowsToolStripMenuItem.Click
         ViewBorrow.ShowDialog()
+    End Sub
+
+    Private Sub ScanTextBox_TextChanged(sender As Object, e As EventArgs) Handles ScanTextBox.TextChanged
+        SearchAction()
+    End Sub
+
+    Private Sub SearchAction()
+        Try
+            Dim text = Convert.ToInt64(ScanTextBox.Text)
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        Dim query = "SELECT Books.ISBN,[Books].[Title],Books.Authors,Borrows.BorrowDate,Borrows.DueDate," &
+                    "Borrows.ReturnDate,Librarians.FirstName,Librarians.LastName " &
+                    "FROM Borrows " &
+                    "FULL OUTER JOIN Books ON Borrows.BookId=Books.BookId " &
+                    "FULL OUTER JOIN Librarians ON Borrows.LibrarianId=Librarians.LibrarianId " &
+                    "WHERE ISBN=@text " &
+                    "ORDER BY Books.Title"
+        Using conn As New SqlConnection(connectionString)
+            Using adapter As New SqlDataAdapter(query, conn)
+                adapter.SelectCommand.Parameters.AddWithValue("@text", Text)
+                Try
+                    conn.Open()
+                    table.Clear()
+                    adapter.Fill(table)
+                    ScannerDataTable.DataSource = table
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End Using
+        End Using
     End Sub
 End Class
