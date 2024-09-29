@@ -30,14 +30,15 @@ Partial Class MainMenu
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateStudentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LibrarianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BorrowsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.AboutToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.BorrowsToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(776, 24)
@@ -71,7 +72,7 @@ Partial Class MainMenu
         '
         'EditToolStripMenuItem
         '
-        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateStudentToolStripMenuItem, Me.BookToolStripMenuItem, Me.UserToolStripMenuItem})
+        Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UpdateStudentToolStripMenuItem, Me.BookToolStripMenuItem, Me.LibrarianToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
         Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.EditToolStripMenuItem.Text = "Edit"
@@ -88,17 +89,23 @@ Partial Class MainMenu
         Me.BookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BookToolStripMenuItem.Text = "Book"
         '
-        'UserToolStripMenuItem
+        'LibrarianToolStripMenuItem
         '
-        Me.UserToolStripMenuItem.Name = "UserToolStripMenuItem"
-        Me.UserToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.UserToolStripMenuItem.Text = "User"
+        Me.LibrarianToolStripMenuItem.Name = "LibrarianToolStripMenuItem"
+        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LibrarianToolStripMenuItem.Text = "Librarian"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
         Me.AboutToolStripMenuItem.Text = "About"
+        '
+        'BorrowsToolStripMenuItem
+        '
+        Me.BorrowsToolStripMenuItem.Name = "BorrowsToolStripMenuItem"
+        Me.BorrowsToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
+        Me.BorrowsToolStripMenuItem.Text = "Borrows"
         '
         'MainMenu
         '
@@ -126,6 +133,7 @@ Partial Class MainMenu
     Friend WithEvents EditToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UpdateStudentToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BookToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents UserToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LibrarianToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BorrowsToolStripMenuItem As ToolStripMenuItem
 End Class

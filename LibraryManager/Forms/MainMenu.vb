@@ -22,6 +22,18 @@ Public Class MainMenu
     End Sub
 
     Private Sub UpdateStudentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateStudentToolStripMenuItem.Click
-        ViewStudent.Show()
+        ViewStudent.ShowDialog()
+    End Sub
+
+    Private Sub BookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BookToolStripMenuItem.Click
+        ViewBook.ShowDialog()
+    End Sub
+
+    Private Sub LibrarianToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LibrarianToolStripMenuItem.Click
+        ViewLibrarian.ShowDialog()
+    End Sub
+
+    Private Sub BorrowsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowsToolStripMenuItem.Click
+        ViewBorrow.ShowDialog()
     End Sub
 End Class

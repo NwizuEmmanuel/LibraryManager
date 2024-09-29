@@ -121,6 +121,18 @@
     <Compile Include="Forms\ViewBook.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ViewBorrow.Designer.vb">
+      <DependentUpon>ViewBorrow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewBorrow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewLibrarian.Designer.vb">
+      <DependentUpon>ViewLibrarian.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewLibrarian.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\ViewStudent.Designer.vb">
       <DependentUpon>ViewStudent.vb</DependentUpon>
     </Compile>
@@ -165,6 +177,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewBook.resx">
       <DependentUpon>ViewBook.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewBorrow.resx">
+      <DependentUpon>ViewBorrow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewLibrarian.resx">
+      <DependentUpon>ViewLibrarian.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewStudent.resx">
       <DependentUpon>ViewStudent.vb</DependentUpon>

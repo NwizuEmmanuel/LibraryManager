@@ -3,11 +3,13 @@ Imports System.Data.SqlClient
 
 Public Class ViewStudent
     Dim connectionString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
+    Dim table As New DataTable()
 
     Private Sub ViewStudent_Load(sender As Object, e As EventArgs) Handles Me.Load
         LoadDataToTable()
         StudentDataGridView.Columns("StudentId").ReadOnly = True
         StudentDataGridView.AllowUserToAddRows = False
+        StudentDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
 
         ' Assign event handler for DataGridView MouseDown event
         AddHandler StudentDataGridView.MouseDown, AddressOf StudentDataGridView_MouseDown
@@ -72,7 +74,7 @@ Public Class ViewStudent
     Private Sub LoadDataToTable()
         Using connection As New SqlConnection(connectionString)
             Using adapter As New SqlDataAdapter("select * from [Students]", connection)
-                Dim table As New DataTable()
+                table.Clear()
                 adapter.Fill(table)
                 StudentDataGridView.DataSource = table
             End Using
@@ -96,7 +98,6 @@ Public Class ViewStudent
 
                     ' Execute the query
                     command.ExecuteNonQuery()
-                    MessageBox.Show("Data Update Successfull")
                 Catch ex As Exception
                     MessageBox.Show(ex.Message)
                 End Try
@@ -121,4 +122,27 @@ Public Class ViewStudent
         LoadDataToTable()
     End Sub
 
+    Private Sub SearchStudentTextBox_TextChanged(sender As Object, e As EventArgs) Handles SearchStudentTextBox.TextChanged
+        Dim text = SearchStudentTextBox.Text & "%"
+        Using conn As New SqlConnection(connectionString)
+            Using adapter As New SqlDataAdapter(
+                "SELECT * FROM [Students] " &
+                "WHERE [FirstName] LIKE @text OR " &
+                "[LastName] LIKE @text OR " &
+                "[Address] LIKE @text OR " &
+                "[Department] LIKE @text OR " &
+                "[PhoneNumber] LIKE @text OR " &
+                "[Email] LIKE @text", conn)
+                adapter.SelectCommand.Parameters.AddWithValue("@text", text)
+                Try
+                    conn.Open()
+                    table.Clear()
+                    adapter.Fill(table)
+                    StudentDataGridView.DataSource = table
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
 End Class

@@ -22,15 +22,19 @@ Partial Class ViewBook
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BookFormTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.RefreshButton = New System.Windows.Forms.Button()
         Me.SearchTextBox = New System.Windows.Forms.TextBox()
         Me.SearchBookLabel = New System.Windows.Forms.Label()
         Me.BookTableView = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BookFormTableLayoutPanel.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.BookTableView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BookFormTableLayoutPanel
@@ -97,6 +101,18 @@ Partial Class ViewBook
         Me.BookTableView.Size = New System.Drawing.Size(689, 464)
         Me.BookTableView.TabIndex = 1
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 48)
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
         'ViewBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -111,6 +127,7 @@ Partial Class ViewBook
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.BookTableView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -121,4 +138,6 @@ Partial Class ViewBook
     Friend WithEvents RefreshButton As Button
     Friend WithEvents SearchTextBox As TextBox
     Friend WithEvents SearchBookLabel As Label
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
 End Class

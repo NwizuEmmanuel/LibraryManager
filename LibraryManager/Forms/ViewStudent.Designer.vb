@@ -29,7 +29,7 @@ Partial Class ViewStudent
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.RefreshButton = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.SearchStudentTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.StudentDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -56,7 +56,7 @@ Partial Class ViewStudent
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'TableLayoutPanel1
@@ -78,7 +78,7 @@ Partial Class ViewStudent
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.RefreshButton)
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.SearchStudentTextBox)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(4, 4)
@@ -96,13 +96,13 @@ Partial Class ViewStudent
         Me.RefreshButton.Text = "Refresh"
         Me.RefreshButton.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'SearchStudentTextBox
         '
-        Me.TextBox1.Location = New System.Drawing.Point(7, 36)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(353, 22)
-        Me.TextBox1.TabIndex = 1
+        Me.SearchStudentTextBox.Location = New System.Drawing.Point(7, 36)
+        Me.SearchStudentTextBox.Margin = New System.Windows.Forms.Padding(4)
+        Me.SearchStudentTextBox.Name = "SearchStudentTextBox"
+        Me.SearchStudentTextBox.Size = New System.Drawing.Size(353, 22)
+        Me.SearchStudentTextBox.TabIndex = 1
         '
         'Label1
         '
@@ -138,7 +138,7 @@ Partial Class ViewStudent
     Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents SearchStudentTextBox As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents RefreshButton As Button
 End Class
