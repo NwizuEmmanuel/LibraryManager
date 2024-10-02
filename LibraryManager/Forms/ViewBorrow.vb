@@ -98,15 +98,39 @@ Public Class ViewBorrow
             ReturnBook(isbnText)
         ElseIf BorrowBookOption.Checked Then
             'logiv here
+            BorrowBook(isbnText)
         End If
     End Sub
 
     Private Sub BorrowBook(isbn As String)
-        If String.IsNullOrEmpty(ISBNTextBox.Text) Then
-            MessageBox.Show("Enter book ISBN.")
+        Dim today = DateTime.Today
+        Dim dueDate = DateTime.Parse(DueDateTextBox.Text)
+
+        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(dueDate) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
+            MessageBox.Show("Enter book ISBN or due date or student phone number.")
             Exit Sub
         End If
 
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+                "insert into Borrows (BookId,StudentId,BorrowDate,DueDate,LibrarianId)" &
+                "values ((select BookId from Books where ISBN=@isbn),(select StudentId from Students where " &
+                "PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate,(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
+                connection)
+                Try
+                    connection.Open()
+                    command.Parameters.AddWithValue("@isbn", isbn)
+                    command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
+                    command.Parameters.AddWithValue("@todayDate", today)
+                    command.Parameters.AddWithValue("@dueToday", DueDateTextBox.Text)
+                    command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Book is Borrowed Successfully.")
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End Using
+        End Using
     End Sub
 
     Private Sub ReturnBook(isbn As String)
@@ -142,11 +166,13 @@ Public Class ViewBorrow
 
     Private Sub ReturnBookOption_CheckedChanged(sender As Object, e As EventArgs) Handles ReturnBookOption.CheckedChanged
         If ReturnBookOption.Checked() Then
-            StudentNameTextBox.Enabled = False
+            StudentPhoneNumberTextBox.Enabled = False
             EnterStudentLabel.Enabled = False
+            DueDateTextBox.Enabled = False
         Else
-            StudentNameTextBox.Enabled = True
+            StudentPhoneNumberTextBox.Enabled = True
             EnterStudentLabel.Enabled = True
+            DueDateTextBox.Enabled = True
         End If
     End Sub
 End Class

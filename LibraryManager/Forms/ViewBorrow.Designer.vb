@@ -23,6 +23,10 @@ Partial Class ViewBorrow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.BorrowPanel = New System.Windows.Forms.Panel()
+        Me.DueDateTextBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.StudentPhoneNumberTextBox = New System.Windows.Forms.TextBox()
+        Me.EnterStudentLabel = New System.Windows.Forms.Label()
         Me.RefreshLabel = New System.Windows.Forms.LinkLabel()
         Me.Borrow_ReturnButton = New System.Windows.Forms.Button()
         Me.ReturnBookOption = New System.Windows.Forms.RadioButton()
@@ -32,8 +36,6 @@ Partial Class ViewBorrow
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BorrowDataTable = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.EnterStudentLabel = New System.Windows.Forms.Label()
-        Me.StudentNameTextBox = New System.Windows.Forms.TextBox()
         Me.BorrowPanel.SuspendLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -41,7 +43,9 @@ Partial Class ViewBorrow
         '
         'BorrowPanel
         '
-        Me.BorrowPanel.Controls.Add(Me.StudentNameTextBox)
+        Me.BorrowPanel.Controls.Add(Me.DueDateTextBox)
+        Me.BorrowPanel.Controls.Add(Me.Label2)
+        Me.BorrowPanel.Controls.Add(Me.StudentPhoneNumberTextBox)
         Me.BorrowPanel.Controls.Add(Me.EnterStudentLabel)
         Me.BorrowPanel.Controls.Add(Me.RefreshLabel)
         Me.BorrowPanel.Controls.Add(Me.Borrow_ReturnButton)
@@ -56,6 +60,38 @@ Partial Class ViewBorrow
         Me.BorrowPanel.Name = "BorrowPanel"
         Me.BorrowPanel.Size = New System.Drawing.Size(661, 143)
         Me.BorrowPanel.TabIndex = 0
+        '
+        'DueDateTextBox
+        '
+        Me.DueDateTextBox.Location = New System.Drawing.Point(12, 68)
+        Me.DueDateTextBox.Name = "DueDateTextBox"
+        Me.DueDateTextBox.Size = New System.Drawing.Size(288, 22)
+        Me.DueDateTextBox.TabIndex = 14
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(9, 49)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(161, 16)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Due Date (MM/DD/YYYY)"
+        '
+        'StudentPhoneNumberTextBox
+        '
+        Me.StudentPhoneNumberTextBox.Location = New System.Drawing.Point(306, 24)
+        Me.StudentPhoneNumberTextBox.Name = "StudentPhoneNumberTextBox"
+        Me.StudentPhoneNumberTextBox.Size = New System.Drawing.Size(262, 22)
+        Me.StudentPhoneNumberTextBox.TabIndex = 12
+        '
+        'EnterStudentLabel
+        '
+        Me.EnterStudentLabel.AutoSize = True
+        Me.EnterStudentLabel.Location = New System.Drawing.Point(307, 5)
+        Me.EnterStudentLabel.Name = "EnterStudentLabel"
+        Me.EnterStudentLabel.Size = New System.Drawing.Size(179, 16)
+        Me.EnterStudentLabel.TabIndex = 11
+        Me.EnterStudentLabel.Text = "Enter Student Phone Number"
         '
         'RefreshLabel
         '
@@ -81,7 +117,7 @@ Partial Class ViewBorrow
         '
         Me.ReturnBookOption.AutoSize = True
         Me.ReturnBookOption.Checked = True
-        Me.ReturnBookOption.Location = New System.Drawing.Point(12, 78)
+        Me.ReturnBookOption.Location = New System.Drawing.Point(414, 70)
         Me.ReturnBookOption.Name = "ReturnBookOption"
         Me.ReturnBookOption.Size = New System.Drawing.Size(99, 20)
         Me.ReturnBookOption.TabIndex = 8
@@ -92,7 +128,7 @@ Partial Class ViewBorrow
         'BorrowBookOption
         '
         Me.BorrowBookOption.AutoSize = True
-        Me.BorrowBookOption.Location = New System.Drawing.Point(12, 52)
+        Me.BorrowBookOption.Location = New System.Drawing.Point(306, 70)
         Me.BorrowBookOption.Name = "BorrowBookOption"
         Me.BorrowBookOption.Size = New System.Drawing.Size(102, 20)
         Me.BorrowBookOption.TabIndex = 7
@@ -151,22 +187,6 @@ Partial Class ViewBorrow
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(669, 554)
         Me.TableLayoutPanel2.TabIndex = 1
         '
-        'EnterStudentLabel
-        '
-        Me.EnterStudentLabel.AutoSize = True
-        Me.EnterStudentLabel.Location = New System.Drawing.Point(307, 5)
-        Me.EnterStudentLabel.Name = "EnterStudentLabel"
-        Me.EnterStudentLabel.Size = New System.Drawing.Size(126, 16)
-        Me.EnterStudentLabel.TabIndex = 11
-        Me.EnterStudentLabel.Text = "Enter Student Name"
-        '
-        'StudentNameTextBox
-        '
-        Me.StudentNameTextBox.Location = New System.Drawing.Point(306, 24)
-        Me.StudentNameTextBox.Name = "StudentNameTextBox"
-        Me.StudentNameTextBox.Size = New System.Drawing.Size(262, 22)
-        Me.StudentNameTextBox.TabIndex = 12
-        '
         'ViewBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -194,6 +214,8 @@ Partial Class ViewBorrow
     Friend WithEvents BorrowBookOption As RadioButton
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents RefreshLabel As LinkLabel
-    Friend WithEvents StudentNameTextBox As TextBox
+    Friend WithEvents StudentPhoneNumberTextBox As TextBox
     Friend WithEvents EnterStudentLabel As Label
+    Friend WithEvents DueDateTextBox As TextBox
+    Friend WithEvents Label2 As Label
 End Class

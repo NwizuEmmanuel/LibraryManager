@@ -17,7 +17,7 @@ Public Class Login
 
         Using connection As New SqlConnection(connString)
             Dim query = "
-                SELECT [LibrarianId],[FirstName],[LastName] FROM [Librarians] WHERE [Email]=@email AND
+                SELECT [LibrarianId],[FirstName],[LastName],[PhoneNumber] FROM [Librarians] WHERE [Email]=@email AND
                 [Password]=@pass
 "
             Using command As New SqlCommand(query, connection)
@@ -34,6 +34,7 @@ Public Class Login
                         While reader.Read()
                             Whoami.Firstname = reader("FirstName")
                             Whoami.Lastname = reader("LastName")
+                            Whoami.PhoneNumber = reader("PhoneNumber")
                         End While
                         Me.Hide()
                         MainMenu.Show()
