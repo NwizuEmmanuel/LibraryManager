@@ -22,6 +22,7 @@ Partial Class ViewBorrow
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.BorrowPanel = New System.Windows.Forms.Panel()
         Me.DueDateTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -36,9 +37,12 @@ Partial Class ViewBorrow
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BorrowDataTable = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BorrowPanel.SuspendLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'BorrowPanel
@@ -75,7 +79,7 @@ Partial Class ViewBorrow
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(161, 16)
         Me.Label2.TabIndex = 13
-        Me.Label2.Text = "Due Date (MM/DD/YYYY)"
+        Me.Label2.Text = "Due Date (YYYY-MM-DD)"
         '
         'StudentPhoneNumberTextBox
         '
@@ -187,6 +191,18 @@ Partial Class ViewBorrow
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(669, 554)
         Me.TableLayoutPanel2.TabIndex = 1
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(108, 26)
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
         'ViewBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -201,6 +217,7 @@ Partial Class ViewBorrow
         Me.BorrowPanel.PerformLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -218,4 +235,6 @@ Partial Class ViewBorrow
     Friend WithEvents EnterStudentLabel As Label
     Friend WithEvents DueDateTextBox As TextBox
     Friend WithEvents Label2 As Label
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
 End Class

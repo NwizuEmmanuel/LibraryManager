@@ -39,10 +39,10 @@ Public Class MainMenu
     End Sub
 
     Private Sub ScanTextBox_TextChanged(sender As Object, e As EventArgs) Handles ScanTextBox.TextChanged
-        SearchAction()
+        ScanAction()
     End Sub
 
-    Private Sub SearchAction()
+    Private Sub ScanAction()
         Try
             Dim text = Convert.ToInt64(ScanTextBox.Text)
         Catch ex As Exception
@@ -70,6 +70,67 @@ Public Class MainMenu
         End Using
     End Sub
 
+    Private Sub BorrowBook(isbn As String)
+        Dim today As DateTime = DateTime.Now
+
+        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DueDateTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
+            MessageBox.Show("Enter book ISBN or due date or student phone number.")
+            Exit Sub
+        End If
+
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+                "insert into Borrows (BookId,StudentId,BorrowDate,DueDate,LibrarianId)" &
+                "values ((select BookId from Books where ISBN=@isbn)," &
+                "(select StudentId from Students where PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate," &
+                "(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
+                connection)
+                Try
+                    connection.Open()
+                    command.Parameters.AddWithValue("@isbn", isbn)
+                    command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
+                    command.Parameters.AddWithValue("@todayDate", today)
+                    command.Parameters.AddWithValue("@dueDate", DueDateTextBox.Text)
+                    command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Book is Borrowed Successfully.")
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
+    Private Sub ReturnBook(isbn As String)
+        Dim todayDate = DateTime.Today
+
+        If String.IsNullOrEmpty(isbn) Then
+            MessageBox.Show("Enter a ISBN value.")
+            Exit Sub
+        End If
+
+        Dim result As DialogResult
+        result = MessageBox.Show("Are you sure of this return?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            Using connection As New SqlConnection(connectionString)
+                Using command As New SqlCommand(
+                    "UPDATE Borrows SET ReturnDate=@today WHERE BookId=" &
+                    "(SELECT [BookId] FROM [Books] WHERE ISBN=@isbn)",
+                    connection)
+                    Try
+                        connection.Open()
+                        command.Parameters.AddWithValue("@isbn", isbn)
+                        command.Parameters.AddWithValue("@today", todayDate)
+                        command.ExecuteNonQuery()
+                        MessageBox.Show("Book returned.")
+                        LoadDataTable()
+                    Catch ex As Exception
+                        MessageBox.Show(ex.Message)
+                    End Try
+                End Using
+            End Using
+        End If
+    End Sub
     Private Sub BorrowedBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowedBookToolStripMenuItem.Click
         ViewBorrow.ShowDialog()
     End Sub

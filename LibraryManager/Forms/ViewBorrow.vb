@@ -10,17 +10,21 @@ Public Class ViewBorrow
         'BorrowDataTable.Columns("BorrowId").ReadOnly = True
         BorrowDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         BorrowDataTable.AllowUserToAddRows = False
-        BorrowDataTable.AllowUserToDeleteRows = False
         BorrowDataTable.ReadOnly = True
+        BorrowDataTable.Columns("BorrowDate").ReadOnly = False
+        BorrowDataTable.Columns("DueDate").ReadOnly = False
+        BorrowDataTable.Columns("ReturnDate").ReadOnly = False
     End Sub
     Private Sub LoadDataTable()
         Using connection As New SqlConnection(connectionString)
             Using adapter As New SqlDataAdapter(
                     "SELECT Borrows.BorrowId,Books.ISBN,[Books].[Title],Books.Authors,Borrows.BorrowDate,Borrows.DueDate," &
-                    "Borrows.ReturnDate,Librarians.FirstName,Librarians.LastName " &
+                    "Borrows.ReturnDate,Librarians.FirstName as LibrarianFirstname,Librarians.LastName as LibrarianLastname " &
+                    ",Students.FirstName as StudentFirstame,Students.LastName as StudentLastName " &
                     "FROM Borrows " &
-                    "FULL OUTER JOIN Books ON Borrows.BookId=Books.BookId " &
-                    "FULL OUTER JOIN Librarians ON Borrows.LibrarianId=Librarians.LibrarianId " &
+                    "INNER JOIN Books ON Borrows.BookId=Books.BookId " &
+                    "INNER JOIN Librarians ON Borrows.LibrarianId=Librarians.LibrarianId " &
+                    "INNER JOIN Students ON Borrows.StudentId=Students.StudentId " &
                     "ORDER BY Books.Title",
                     connection
                 )
@@ -59,34 +63,6 @@ Public Class ViewBorrow
         End Using
     End Sub
 
-    Private Sub ReturnBookBtn_Click(sender As Object, e As EventArgs)
-        Try
-            Dim selectedRow As DataGridViewRow = BorrowDataTable.SelectedRows(0)
-            Dim id = selectedRow.Cells("BorrowId").Value
-            Dim dateValue As DateTime = DateTime.Today.ToString()
-            ReturnBookAction(id:=id, value:=dateValue)
-        Catch ex As Exception
-            MessageBox.Show("Select a row. " & ex.Message)
-        End Try
-    End Sub
-
-    Private Sub ReturnBookAction(id As Integer, value As DateTime)
-        Using connection As New SqlConnection(connectionString)
-            Using command As New SqlCommand("UPDATE Borrows SET ReturnDate=@date WHERE BorrowId=@id", connection)
-                Try
-                    connection.Open()
-                    command.Parameters.AddWithValue("@date", value)
-                    command.Parameters.AddWithValue("@id", id)
-                    command.ExecuteNonQuery()
-                    MessageBox.Show("Book is returned.")
-                    LoadDataTable()
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message)
-                End Try
-            End Using
-        End Using
-    End Sub
-
     Private Sub RefreshLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles RefreshLabel.LinkClicked
         LoadDataTable()
     End Sub
@@ -99,14 +75,14 @@ Public Class ViewBorrow
         ElseIf BorrowBookOption.Checked Then
             'logiv here
             BorrowBook(isbnText)
+            LoadDataTable()
         End If
     End Sub
 
     Private Sub BorrowBook(isbn As String)
-        Dim today = DateTime.Today
-        Dim dueDate = DateTime.Parse(DueDateTextBox.Text)
+        Dim today As DateTime = DateTime.Now
 
-        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(dueDate) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
+        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DueDateTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
             MessageBox.Show("Enter book ISBN or due date or student phone number.")
             Exit Sub
         End If
@@ -114,15 +90,16 @@ Public Class ViewBorrow
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand(
                 "insert into Borrows (BookId,StudentId,BorrowDate,DueDate,LibrarianId)" &
-                "values ((select BookId from Books where ISBN=@isbn),(select StudentId from Students where " &
-                "PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate,(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
+                "values ((select BookId from Books where ISBN=@isbn)," &
+                "(select StudentId from Students where PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate," &
+                "(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
                 connection)
                 Try
                     connection.Open()
                     command.Parameters.AddWithValue("@isbn", isbn)
                     command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
                     command.Parameters.AddWithValue("@todayDate", today)
-                    command.Parameters.AddWithValue("@dueToday", DueDateTextBox.Text)
+                    command.Parameters.AddWithValue("@dueDate", DueDateTextBox.Text)
                     command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
                     command.ExecuteNonQuery()
                     MessageBox.Show("Book is Borrowed Successfully.")
@@ -173,6 +150,76 @@ Public Class ViewBorrow
             StudentPhoneNumberTextBox.Enabled = True
             EnterStudentLabel.Enabled = True
             DueDateTextBox.Enabled = True
+        End If
+    End Sub
+
+    Private Sub BorrowDataTable_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles BorrowDataTable.CellEndEdit
+        Dim editedCellValue As Object = BorrowDataTable.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+        Dim primaryKey As Integer = CInt(BorrowDataTable.Rows(e.RowIndex).Cells("BorrowId").Value.ToString())
+        Dim columnName = BorrowDataTable.Columns(e.ColumnIndex).Name
+
+        UpdateDatabase(id:=primaryKey, editedValue:=editedCellValue, columnName:=columnName)
+    End Sub
+
+    Private Sub UpdateDatabase(id As Integer, editedValue As Object, columnName As String)
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+                $"UPDATE Borrows SET {columnName}=@editedValue WHERE BorrowId=@id",
+                connection)
+                Try
+                    connection.Open()
+                    command.Parameters.AddWithValue("@editedValue", editedValue)
+                    command.Parameters.AddWithValue("@id", id)
+                    command.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+        If BorrowDataTable.SelectedRows.Count > 0 Then
+            Dim selectedRow As DataGridViewRow = BorrowDataTable.SelectedRows(0)
+            Dim id = Convert.ToInt32(selectedRow.Cells("BorrowId").Value)
+            BorrowDataTable.Rows.Remove(selectedRow)
+            DeleteFromDatabase(id)
+        End If
+    End Sub
+
+    Private Sub DeleteFromDatabase(id As Integer)
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+                    "DELETE FROM [Borrows] WHERE BorrowId=@id",
+                    connection
+                )
+                Try
+                    connection.Open()
+                    command.Parameters.AddWithValue("@id", id)
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Borrow transaction Deleted.")
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
+    Private Sub BorrowDataTable_MouseDown(sender As Object, e As MouseEventArgs) Handles BorrowDataTable.MouseDown
+        ' Check if right mouse button was clicked
+        If e.Button = MouseButtons.Right Then
+            ' Get the row index from the mouse position
+            Dim hitTestInfo As DataGridView.HitTestInfo = BorrowDataTable.HitTest(e.X, e.Y)
+
+            ' Ensure the user clicked on a valid row and not the column headers
+            If hitTestInfo.Type = DataGridViewHitTestType.Cell Then
+                ' Select the row where the right-click happened
+                BorrowDataTable.ClearSelection()
+                BorrowDataTable.Rows(hitTestInfo.RowIndex).Selected = True
+
+                ' Show the context menu at the mouse position
+                ContextMenuStrip1.Show(BorrowDataTable, New Point(e.X, e.Y))
+            End If
         End If
     End Sub
 End Class
