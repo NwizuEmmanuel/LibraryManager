@@ -38,10 +38,6 @@ Public Class MainMenu
         ViewLibrarian.ShowDialog()
     End Sub
 
-    Private Sub BorrowsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowsToolStripMenuItem.Click
-        ViewBorrow.ShowDialog()
-    End Sub
-
     Private Sub ScanTextBox_TextChanged(sender As Object, e As EventArgs) Handles ScanTextBox.TextChanged
         SearchAction()
     End Sub
@@ -72,5 +68,13 @@ Public Class MainMenu
                 End Try
             End Using
         End Using
+    End Sub
+
+    Private Sub BorrowedBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowedBookToolStripMenuItem.Click
+        ViewBorrow.ShowDialog()
+    End Sub
+
+    Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
+        WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
     End Sub
 End Class

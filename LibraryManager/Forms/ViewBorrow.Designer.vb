@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ViewBorrow
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,58 +20,102 @@ Partial Class ViewBorrow
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.BorrowPanel = New System.Windows.Forms.Panel()
-        Me.SearchBorrowsTextBox = New System.Windows.Forms.TextBox()
+        Me.RefreshLabel = New System.Windows.Forms.LinkLabel()
+        Me.Borrow_ReturnButton = New System.Windows.Forms.Button()
+        Me.ReturnBookOption = New System.Windows.Forms.RadioButton()
+        Me.BorrowBookOption = New System.Windows.Forms.RadioButton()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.ISBNTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.RefreshButton = New System.Windows.Forms.Button()
         Me.BorrowDataTable = New System.Windows.Forms.DataGridView()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel1.SuspendLayout()
+        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.EnterStudentLabel = New System.Windows.Forms.Label()
+        Me.StudentNameTextBox = New System.Windows.Forms.TextBox()
         Me.BorrowPanel.SuspendLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TableLayoutPanel1
-        '
-        Me.TableLayoutPanel1.ColumnCount = 1
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.BorrowPanel, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.BorrowDataTable, 0, 1)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.55596!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.44404!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(746, 554)
-        Me.TableLayoutPanel1.TabIndex = 0
         '
         'BorrowPanel
         '
-        Me.BorrowPanel.Controls.Add(Me.GroupBox1)
-        Me.BorrowPanel.Controls.Add(Me.SearchBorrowsTextBox)
+        Me.BorrowPanel.Controls.Add(Me.StudentNameTextBox)
+        Me.BorrowPanel.Controls.Add(Me.EnterStudentLabel)
+        Me.BorrowPanel.Controls.Add(Me.RefreshLabel)
+        Me.BorrowPanel.Controls.Add(Me.Borrow_ReturnButton)
+        Me.BorrowPanel.Controls.Add(Me.ReturnBookOption)
+        Me.BorrowPanel.Controls.Add(Me.BorrowBookOption)
+        Me.BorrowPanel.Controls.Add(Me.LinkLabel1)
+        Me.BorrowPanel.Controls.Add(Me.ISBNTextBox)
         Me.BorrowPanel.Controls.Add(Me.Label1)
-        Me.BorrowPanel.Controls.Add(Me.RefreshButton)
         Me.BorrowPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BorrowPanel.Location = New System.Drawing.Point(4, 4)
         Me.BorrowPanel.Margin = New System.Windows.Forms.Padding(4)
         Me.BorrowPanel.Name = "BorrowPanel"
-        Me.BorrowPanel.Size = New System.Drawing.Size(738, 261)
+        Me.BorrowPanel.Size = New System.Drawing.Size(661, 143)
         Me.BorrowPanel.TabIndex = 0
         '
-        'SearchBorrowsTextBox
+        'RefreshLabel
         '
-        Me.SearchBorrowsTextBox.Location = New System.Drawing.Point(12, 24)
-        Me.SearchBorrowsTextBox.Name = "SearchBorrowsTextBox"
-        Me.SearchBorrowsTextBox.Size = New System.Drawing.Size(288, 22)
-        Me.SearchBorrowsTextBox.TabIndex = 2
+        Me.RefreshLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RefreshLabel.AutoSize = True
+        Me.RefreshLabel.Location = New System.Drawing.Point(599, 111)
+        Me.RefreshLabel.Name = "RefreshLabel"
+        Me.RefreshLabel.Size = New System.Drawing.Size(54, 16)
+        Me.RefreshLabel.TabIndex = 10
+        Me.RefreshLabel.TabStop = True
+        Me.RefreshLabel.Text = "Refresh"
+        '
+        'Borrow_ReturnButton
+        '
+        Me.Borrow_ReturnButton.Location = New System.Drawing.Point(12, 104)
+        Me.Borrow_ReturnButton.Name = "Borrow_ReturnButton"
+        Me.Borrow_ReturnButton.Size = New System.Drawing.Size(110, 23)
+        Me.Borrow_ReturnButton.TabIndex = 9
+        Me.Borrow_ReturnButton.Text = "Borrow/Return"
+        Me.Borrow_ReturnButton.UseVisualStyleBackColor = True
+        '
+        'ReturnBookOption
+        '
+        Me.ReturnBookOption.AutoSize = True
+        Me.ReturnBookOption.Checked = True
+        Me.ReturnBookOption.Location = New System.Drawing.Point(12, 78)
+        Me.ReturnBookOption.Name = "ReturnBookOption"
+        Me.ReturnBookOption.Size = New System.Drawing.Size(99, 20)
+        Me.ReturnBookOption.TabIndex = 8
+        Me.ReturnBookOption.TabStop = True
+        Me.ReturnBookOption.Text = "Return Book"
+        Me.ReturnBookOption.UseVisualStyleBackColor = True
+        '
+        'BorrowBookOption
+        '
+        Me.BorrowBookOption.AutoSize = True
+        Me.BorrowBookOption.Location = New System.Drawing.Point(12, 52)
+        Me.BorrowBookOption.Name = "BorrowBookOption"
+        Me.BorrowBookOption.Size = New System.Drawing.Size(102, 20)
+        Me.BorrowBookOption.TabIndex = 7
+        Me.BorrowBookOption.TabStop = True
+        Me.BorrowBookOption.Text = "Borrow Book"
+        Me.BorrowBookOption.UseVisualStyleBackColor = True
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(9, 242)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(87, 16)
+        Me.LinkLabel1.TabIndex = 6
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Refresh table"
+        '
+        'ISBNTextBox
+        '
+        Me.ISBNTextBox.Location = New System.Drawing.Point(12, 24)
+        Me.ISBNTextBox.Name = "ISBNTextBox"
+        Me.ISBNTextBox.Size = New System.Drawing.Size(288, 22)
+        Me.ISBNTextBox.TabIndex = 2
         '
         'Label1
         '
@@ -79,82 +123,77 @@ Partial Class ViewBorrow
         Me.Label1.Location = New System.Drawing.Point(9, 5)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(102, 16)
+        Me.Label1.Size = New System.Drawing.Size(72, 16)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Search Borrows"
-        '
-        'RefreshButton
-        '
-        Me.RefreshButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RefreshButton.Location = New System.Drawing.Point(610, 21)
-        Me.RefreshButton.Margin = New System.Windows.Forms.Padding(4)
-        Me.RefreshButton.Name = "RefreshButton"
-        Me.RefreshButton.Size = New System.Drawing.Size(124, 28)
-        Me.RefreshButton.TabIndex = 0
-        Me.RefreshButton.Text = "Refresh"
-        Me.RefreshButton.UseVisualStyleBackColor = True
+        Me.Label1.Text = "Enter ISBN"
         '
         'BorrowDataTable
         '
         Me.BorrowDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.BorrowDataTable.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BorrowDataTable.Location = New System.Drawing.Point(3, 272)
+        Me.BorrowDataTable.Location = New System.Drawing.Point(3, 154)
         Me.BorrowDataTable.Name = "BorrowDataTable"
-        Me.BorrowDataTable.Size = New System.Drawing.Size(740, 279)
+        Me.BorrowDataTable.Size = New System.Drawing.Size(663, 397)
         Me.BorrowDataTable.TabIndex = 1
         '
-        'GroupBox1
+        'TableLayoutPanel2
         '
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.MonthCalendar1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 65)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(375, 193)
-        Me.GroupBox1.TabIndex = 4
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Return"
+        Me.TableLayoutPanel2.ColumnCount = 1
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel2.Controls.Add(Me.BorrowPanel, 0, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.BorrowDataTable, 0, 1)
+        Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
+        Me.TableLayoutPanel2.RowCount = 2
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.43682!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.56318!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(669, 554)
+        Me.TableLayoutPanel2.TabIndex = 1
         '
-        'MonthCalendar1
+        'EnterStudentLabel
         '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(12, 19)
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 0
+        Me.EnterStudentLabel.AutoSize = True
+        Me.EnterStudentLabel.Location = New System.Drawing.Point(307, 5)
+        Me.EnterStudentLabel.Name = "EnterStudentLabel"
+        Me.EnterStudentLabel.Size = New System.Drawing.Size(126, 16)
+        Me.EnterStudentLabel.TabIndex = 11
+        Me.EnterStudentLabel.Text = "Enter Student Name"
         '
-        'Button1
+        'StudentNameTextBox
         '
-        Me.Button1.Location = New System.Drawing.Point(251, 158)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(96, 23)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Return Book"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.StudentNameTextBox.Location = New System.Drawing.Point(306, 24)
+        Me.StudentNameTextBox.Name = "StudentNameTextBox"
+        Me.StudentNameTextBox.Size = New System.Drawing.Size(262, 22)
+        Me.StudentNameTextBox.TabIndex = 12
         '
         'ViewBorrow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(746, 554)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.ClientSize = New System.Drawing.Size(669, 554)
+        Me.Controls.Add(Me.TableLayoutPanel2)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "ViewBorrow"
         Me.Text = "ViewBorrow"
-        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.BorrowPanel.ResumeLayout(False)
         Me.BorrowPanel.PerformLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
+        Me.TableLayoutPanel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents BorrowPanel As Panel
-    Friend WithEvents RefreshButton As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents SearchBorrowsTextBox As TextBox
+    Friend WithEvents ISBNTextBox As TextBox
     Friend WithEvents BorrowDataTable As DataGridView
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents MonthCalendar1 As MonthCalendar
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Borrow_ReturnButton As Button
+    Friend WithEvents ReturnBookOption As RadioButton
+    Friend WithEvents BorrowBookOption As RadioButton
+    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents RefreshLabel As LinkLabel
+    Friend WithEvents StudentNameTextBox As TextBox
+    Friend WithEvents EnterStudentLabel As Label
 End Class

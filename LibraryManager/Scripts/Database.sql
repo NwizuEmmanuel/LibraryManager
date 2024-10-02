@@ -121,6 +121,7 @@ VALUES
 -- Disable explicit ID insertion for Librarians table
 SET IDENTITY_INSERT [Librarians] OFF;
 
+SET IDENTITY_INSERT [Borrows] ON;
 -- Insert data into Borrows table with explicit IDs, some with NULL ReturnDate
 INSERT INTO [Borrows] (BorrowId, BookId, StudentId, BorrowDate, DueDate, ReturnDate, LibrarianId)
 VALUES 
@@ -136,4 +137,4 @@ VALUES
 (10, 10, 10, '2024-09-10', '2024-09-24', NULL, 10); -- No return date
 
 -- Disable explicit ID insertion for Borrows table
-SET IDENTITY_INSERT [Borrows] ON;
+SET IDENTITY_INSERT [Borrows] OFF;

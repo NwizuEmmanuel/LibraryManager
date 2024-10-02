@@ -33,6 +33,7 @@ Partial Class MainMenu
         Me.BookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LibrarianToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BorrowsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BorrowedBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -40,8 +41,8 @@ Partial Class MainMenu
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ScannerDataTable = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ScanTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ScanTextBox = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -111,9 +112,16 @@ Partial Class MainMenu
         '
         'BorrowsToolStripMenuItem
         '
+        Me.BorrowsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BorrowedBookToolStripMenuItem})
         Me.BorrowsToolStripMenuItem.Name = "BorrowsToolStripMenuItem"
         Me.BorrowsToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
         Me.BorrowsToolStripMenuItem.Text = "Borrows"
+        '
+        'BorrowedBookToolStripMenuItem
+        '
+        Me.BorrowedBookToolStripMenuItem.Name = "BorrowedBookToolStripMenuItem"
+        Me.BorrowedBookToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.BorrowedBookToolStripMenuItem.Text = "Borrowed Book"
         '
         'AboutToolStripMenuItem
         '
@@ -187,13 +195,6 @@ Partial Class MainMenu
         Me.Panel2.Size = New System.Drawing.Size(770, 42)
         Me.Panel2.TabIndex = 2
         '
-        'ScanTextBox
-        '
-        Me.ScanTextBox.Location = New System.Drawing.Point(50, 4)
-        Me.ScanTextBox.Name = "ScanTextBox"
-        Me.ScanTextBox.Size = New System.Drawing.Size(291, 22)
-        Me.ScanTextBox.TabIndex = 0
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -202,6 +203,13 @@ Partial Class MainMenu
         Me.Label1.Size = New System.Drawing.Size(38, 16)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Scan"
+        '
+        'ScanTextBox
+        '
+        Me.ScanTextBox.Location = New System.Drawing.Point(50, 4)
+        Me.ScanTextBox.Name = "ScanTextBox"
+        Me.ScanTextBox.Size = New System.Drawing.Size(291, 22)
+        Me.ScanTextBox.TabIndex = 0
         '
         'MainMenu
         '
@@ -248,4 +256,5 @@ Partial Class MainMenu
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents ScanTextBox As TextBox
+    Friend WithEvents BorrowedBookToolStripMenuItem As ToolStripMenuItem
 End Class

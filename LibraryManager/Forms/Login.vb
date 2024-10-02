@@ -10,15 +10,14 @@ Public Class Login
     ' where CustomPrincipal is the IPrincipal implementation used to perform authentication. 
     ' Subsequently, My.User will return identity information encapsulated in the CustomPrincipal object
     ' such as the username, display name, etc.
-
+    Dim connString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Dim username = EmailTextBox.Text
         Dim password = PasswordTextBox.Text
-        Dim connString = ConfigurationManager.ConnectionStrings("LibraryDB").ConnectionString
 
         Using connection As New SqlConnection(connString)
             Dim query = "
-                SELECT [LibrarianId] FROM [Librarians] WHERE [Email]=@email AND
+                SELECT [LibrarianId],[FirstName],[LastName] FROM [Librarians] WHERE [Email]=@email AND
                 [Password]=@pass
 "
             Using command As New SqlCommand(query, connection)
@@ -29,14 +28,19 @@ Public Class Login
                     command.Parameters.AddWithValue("@pass", PasswordTextBox.Text)
 
                     Dim userCount As Integer = CInt(command.ExecuteScalar())
-
+                    Dim reader = command.ExecuteReader()
                     If userCount > 0 Then
                         ' Go to next form
+                        While reader.Read()
+                            Whoami.Firstname = reader("FirstName")
+                            Whoami.Lastname = reader("LastName")
+                        End While
                         Me.Hide()
                         MainMenu.Show()
                     Else
                         MessageBox.Show("User does not exists.")
                     End If
+
                 Catch ex As Exception
                     MessageBox.Show("Error: " & ex.Message)
                 Finally
