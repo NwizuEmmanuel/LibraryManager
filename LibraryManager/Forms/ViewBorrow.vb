@@ -79,10 +79,15 @@ Public Class ViewBorrow
         End If
     End Sub
 
+    Private Function GetDueDate(numberOfDays As Integer) As String
+        Dim result As String
+        result = DateTime.Today.AddDays(numberOfDays)
+        Return result
+    End Function
     Private Sub BorrowBook(isbn As String)
         Dim today As DateTime = DateTime.Now
 
-        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DueDateTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
+        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DaysTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
             MessageBox.Show("Enter book ISBN or due date or student phone number.")
             Exit Sub
         End If
@@ -99,7 +104,7 @@ Public Class ViewBorrow
                     command.Parameters.AddWithValue("@isbn", isbn)
                     command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
                     command.Parameters.AddWithValue("@todayDate", today)
-                    command.Parameters.AddWithValue("@dueDate", DueDateTextBox.Text)
+                    command.Parameters.AddWithValue("@dueDate", GetDueDate(DaysTextBox.Text))
                     command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
                     command.ExecuteNonQuery()
                     MessageBox.Show("Book is Borrowed Successfully.")
@@ -145,11 +150,11 @@ Public Class ViewBorrow
         If ReturnBookOption.Checked() Then
             StudentPhoneNumberTextBox.Enabled = False
             EnterStudentLabel.Enabled = False
-            DueDateTextBox.Enabled = False
+            DaysTextBox.Enabled = False
         Else
             StudentPhoneNumberTextBox.Enabled = True
             EnterStudentLabel.Enabled = True
-            DueDateTextBox.Enabled = True
+            DaysTextBox.Enabled = True
         End If
     End Sub
 
@@ -222,4 +227,5 @@ Public Class ViewBorrow
             End If
         End If
     End Sub
+
 End Class

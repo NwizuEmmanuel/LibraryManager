@@ -13,6 +13,7 @@ BEGIN
         [Category] VARCHAR(255) NOT NULL,
         [Publisher] VARCHAR(255) NOT NULL,
         [PublishedDate] DATE NOT NULL,
+		[Quantity] INT DEFAULT 1
     );
 END
 

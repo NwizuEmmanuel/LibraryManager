@@ -89,7 +89,8 @@ Partial Class ViewStudent
         '
         'RefreshButton
         '
-        Me.RefreshButton.Location = New System.Drawing.Point(647, 35)
+        Me.RefreshButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RefreshButton.Location = New System.Drawing.Point(654, 1)
         Me.RefreshButton.Name = "RefreshButton"
         Me.RefreshButton.Size = New System.Drawing.Size(75, 23)
         Me.RefreshButton.TabIndex = 2
@@ -98,7 +99,7 @@ Partial Class ViewStudent
         '
         'SearchStudentTextBox
         '
-        Me.SearchStudentTextBox.Location = New System.Drawing.Point(7, 36)
+        Me.SearchStudentTextBox.Location = New System.Drawing.Point(1, 56)
         Me.SearchStudentTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.SearchStudentTextBox.Name = "SearchStudentTextBox"
         Me.SearchStudentTextBox.Size = New System.Drawing.Size(353, 22)
@@ -107,10 +108,12 @@ Partial Class ViewStudent
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(4, 7)
+        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label1.Location = New System.Drawing.Point(-2, 32)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(103, 16)
+        Me.Label1.Size = New System.Drawing.Size(114, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Search students"
         '
@@ -118,6 +121,7 @@ Partial Class ViewStudent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(738, 554)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

@@ -43,6 +43,7 @@ Partial Class MainMenu
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ScanTextBox = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -70,19 +71,19 @@ Partial Class MainMenu
         'NewBookToolStripMenuItem
         '
         Me.NewBookToolStripMenuItem.Name = "NewBookToolStripMenuItem"
-        Me.NewBookToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.NewBookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewBookToolStripMenuItem.Text = "New Book"
         '
         'NewStudentToolStripMenuItem
         '
         Me.NewStudentToolStripMenuItem.Name = "NewStudentToolStripMenuItem"
-        Me.NewStudentToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.NewStudentToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewStudentToolStripMenuItem.Text = "New Student"
         '
         'NewLibrarianToolStripMenuItem
         '
         Me.NewLibrarianToolStripMenuItem.Name = "NewLibrarianToolStripMenuItem"
-        Me.NewLibrarianToolStripMenuItem.Size = New System.Drawing.Size(147, 22)
+        Me.NewLibrarianToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NewLibrarianToolStripMenuItem.Text = "New Librarian"
         '
         'EditToolStripMenuItem
@@ -95,19 +96,19 @@ Partial Class MainMenu
         'UpdateStudentToolStripMenuItem
         '
         Me.UpdateStudentToolStripMenuItem.Name = "UpdateStudentToolStripMenuItem"
-        Me.UpdateStudentToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.UpdateStudentToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateStudentToolStripMenuItem.Text = "Student"
         '
         'BookToolStripMenuItem
         '
         Me.BookToolStripMenuItem.Name = "BookToolStripMenuItem"
-        Me.BookToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.BookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BookToolStripMenuItem.Text = "Book"
         '
         'LibrarianToolStripMenuItem
         '
         Me.LibrarianToolStripMenuItem.Name = "LibrarianToolStripMenuItem"
-        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.LibrarianToolStripMenuItem.Text = "Librarian"
         '
         'BorrowsToolStripMenuItem
@@ -120,7 +121,7 @@ Partial Class MainMenu
         'BorrowedBookToolStripMenuItem
         '
         Me.BorrowedBookToolStripMenuItem.Name = "BorrowedBookToolStripMenuItem"
-        Me.BorrowedBookToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.BorrowedBookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BorrowedBookToolStripMenuItem.Text = "Borrowed Book"
         '
         'AboutToolStripMenuItem
@@ -148,6 +149,7 @@ Partial Class MainMenu
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.WelcomeLabel)
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -159,25 +161,28 @@ Partial Class MainMenu
         'WelcomeLabel
         '
         Me.WelcomeLabel.AutoSize = True
-        Me.WelcomeLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.WelcomeLabel.Location = New System.Drawing.Point(127, 41)
+        Me.WelcomeLabel.BackColor = System.Drawing.Color.Transparent
+        Me.WelcomeLabel.Font = New System.Drawing.Font("Palatino Linotype", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.WelcomeLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.WelcomeLabel.Location = New System.Drawing.Point(284, 54)
         Me.WelcomeLabel.Name = "WelcomeLabel"
-        Me.WelcomeLabel.Size = New System.Drawing.Size(135, 24)
+        Me.WelcomeLabel.Size = New System.Drawing.Size(245, 37)
         Me.WelcomeLabel.TabIndex = 1
-        Me.WelcomeLabel.Text = "Welcome User"
+        Me.WelcomeLabel.Text = "Welcome Onyeka!"
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(9, 3)
+        Me.PictureBox1.Location = New System.Drawing.Point(29, -3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(112, 81)
+        Me.PictureBox1.Size = New System.Drawing.Size(99, 117)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'ScannerDataTable
         '
+        Me.ScannerDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.ScannerDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ScannerDataTable.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ScannerDataTable.Location = New System.Drawing.Point(3, 164)
@@ -198,23 +203,41 @@ Partial Class MainMenu
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 10)
+        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(44, Byte), Integer), CType(CType(105, Byte), Integer))
+        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label1.Location = New System.Drawing.Point(306, 17)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(38, 16)
+        Me.Label1.Size = New System.Drawing.Size(41, 20)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Scan"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ScanTextBox
         '
-        Me.ScanTextBox.Location = New System.Drawing.Point(50, 4)
+        Me.ScanTextBox.Location = New System.Drawing.Point(9, 17)
         Me.ScanTextBox.Name = "ScanTextBox"
         Me.ScanTextBox.Size = New System.Drawing.Size(291, 22)
         Me.ScanTextBox.TabIndex = 0
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label2.Font = New System.Drawing.Font("Poor Richard", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label2.Location = New System.Drawing.Point(213, 15)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(386, 36)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Library System Management"
         '
         'MainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(776, 513)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
@@ -257,4 +280,5 @@ Partial Class MainMenu
     Friend WithEvents Label1 As Label
     Friend WithEvents ScanTextBox As TextBox
     Friend WithEvents BorrowedBookToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label2 As Label
 End Class

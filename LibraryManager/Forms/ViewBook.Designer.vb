@@ -55,6 +55,7 @@ Partial Class ViewBook
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
         Me.Panel1.Controls.Add(Me.RefreshButton)
         Me.Panel1.Controls.Add(Me.SearchTextBox)
         Me.Panel1.Controls.Add(Me.SearchBookLabel)
@@ -67,16 +68,17 @@ Partial Class ViewBook
         '
         'RefreshButton
         '
-        Me.RefreshButton.Location = New System.Drawing.Point(606, 24)
+        Me.RefreshButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RefreshButton.Location = New System.Drawing.Point(613, 6)
         Me.RefreshButton.Name = "RefreshButton"
-        Me.RefreshButton.Size = New System.Drawing.Size(75, 23)
+        Me.RefreshButton.Size = New System.Drawing.Size(70, 23)
         Me.RefreshButton.TabIndex = 2
         Me.RefreshButton.Text = "Refresh"
         Me.RefreshButton.UseVisualStyleBackColor = True
         '
         'SearchTextBox
         '
-        Me.SearchTextBox.Location = New System.Drawing.Point(7, 24)
+        Me.SearchTextBox.Location = New System.Drawing.Point(7, 43)
         Me.SearchTextBox.Name = "SearchTextBox"
         Me.SearchTextBox.Size = New System.Drawing.Size(244, 22)
         Me.SearchTextBox.TabIndex = 1
@@ -84,10 +86,12 @@ Partial Class ViewBook
         'SearchBookLabel
         '
         Me.SearchBookLabel.AutoSize = True
-        Me.SearchBookLabel.Location = New System.Drawing.Point(4, 5)
+        Me.SearchBookLabel.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchBookLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.SearchBookLabel.Location = New System.Drawing.Point(5, 18)
         Me.SearchBookLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SearchBookLabel.Name = "SearchBookLabel"
-        Me.SearchBookLabel.Size = New System.Drawing.Size(92, 16)
+        Me.SearchBookLabel.Size = New System.Drawing.Size(98, 20)
         Me.SearchBookLabel.TabIndex = 0
         Me.SearchBookLabel.Text = "Search Books"
         '
@@ -105,12 +109,12 @@ Partial Class ViewBook
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(108, 26)
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'ViewBook

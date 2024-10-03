@@ -1,10 +1,10 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+<Global.System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1726")>
 Partial Class Login
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -28,7 +28,7 @@ Partial Class Login
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Login))
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
@@ -38,23 +38,26 @@ Partial Class Login
         Me.PasswordTextBox = New System.Windows.Forms.TextBox()
         Me.OK = New System.Windows.Forms.Button()
         Me.Cancel = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LogoPictureBox
         '
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
-        Me.LogoPictureBox.Location = New System.Drawing.Point(0, 0)
-        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LogoPictureBox.Location = New System.Drawing.Point(1, 1)
+        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(220, 238)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(99, 84)
         Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
         'EmailLabel
         '
-        Me.EmailLabel.Location = New System.Drawing.Point(229, 30)
+        Me.EmailLabel.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EmailLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.EmailLabel.Location = New System.Drawing.Point(173, 143)
         Me.EmailLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.EmailLabel.Name = "EmailLabel"
         Me.EmailLabel.Size = New System.Drawing.Size(293, 28)
@@ -64,7 +67,9 @@ Partial Class Login
         '
         'PasswordLabel
         '
-        Me.PasswordLabel.Location = New System.Drawing.Point(229, 100)
+        Me.PasswordLabel.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PasswordLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.PasswordLabel.Location = New System.Drawing.Point(173, 202)
         Me.PasswordLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(293, 28)
@@ -74,16 +79,16 @@ Partial Class Login
         '
         'EmailTextBox
         '
-        Me.EmailTextBox.Location = New System.Drawing.Point(232, 54)
-        Me.EmailTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.EmailTextBox.Location = New System.Drawing.Point(176, 173)
+        Me.EmailTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.EmailTextBox.Name = "EmailTextBox"
         Me.EmailTextBox.Size = New System.Drawing.Size(292, 22)
         Me.EmailTextBox.TabIndex = 1
         '
         'PasswordTextBox
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(232, 124)
-        Me.PasswordTextBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(176, 232)
+        Me.PasswordTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(292, 22)
@@ -91,30 +96,49 @@ Partial Class Login
         '
         'OK
         '
-        Me.OK.Location = New System.Drawing.Point(263, 198)
-        Me.OK.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.OK.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OK.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.OK.Location = New System.Drawing.Point(408, 266)
+        Me.OK.Margin = New System.Windows.Forms.Padding(4)
         Me.OK.Name = "OK"
-        Me.OK.Size = New System.Drawing.Size(125, 28)
+        Me.OK.Size = New System.Drawing.Size(61, 28)
         Me.OK.TabIndex = 4
-        Me.OK.Text = "&OK"
+        Me.OK.Text = "Log in"
         '
         'Cancel
         '
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Location = New System.Drawing.Point(400, 198)
-        Me.Cancel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Cancel.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Cancel.Location = New System.Drawing.Point(602, 4)
+        Me.Cancel.Margin = New System.Windows.Forms.Padding(4)
         Me.Cancel.Name = "Cancel"
-        Me.Cancel.Size = New System.Drawing.Size(125, 28)
+        Me.Cancel.Size = New System.Drawing.Size(43, 29)
         Me.Cancel.TabIndex = 5
-        Me.Cancel.Text = "&Cancel"
+        Me.Cancel.Text = "Exit"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Label2.Font = New System.Drawing.Font("Poor Richard", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label2.Location = New System.Drawing.Point(133, 87)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(386, 36)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "Library System Management"
         '
         'Login
         '
         Me.AcceptButton = Me.OK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(535, 236)
+        Me.ClientSize = New System.Drawing.Size(649, 401)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
         Me.Controls.Add(Me.PasswordTextBox)
@@ -124,7 +148,7 @@ Partial Class Login
         Me.Controls.Add(Me.LogoPictureBox)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Login"
@@ -137,4 +161,5 @@ Partial Class Login
 
     End Sub
 
+    Friend WithEvents Label2 As Label
 End Class

@@ -66,7 +66,8 @@ Partial Class ViewLibrarian
         '
         'RefreshButton
         '
-        Me.RefreshButton.Location = New System.Drawing.Point(597, 25)
+        Me.RefreshButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RefreshButton.Location = New System.Drawing.Point(604, 3)
         Me.RefreshButton.Name = "RefreshButton"
         Me.RefreshButton.Size = New System.Drawing.Size(75, 23)
         Me.RefreshButton.TabIndex = 2
@@ -75,7 +76,7 @@ Partial Class ViewLibrarian
         '
         'SearchLibrarianTextBox
         '
-        Me.SearchLibrarianTextBox.Location = New System.Drawing.Point(12, 25)
+        Me.SearchLibrarianTextBox.Location = New System.Drawing.Point(1, 48)
         Me.SearchLibrarianTextBox.Name = "SearchLibrarianTextBox"
         Me.SearchLibrarianTextBox.Size = New System.Drawing.Size(206, 22)
         Me.SearchLibrarianTextBox.TabIndex = 1
@@ -83,9 +84,11 @@ Partial Class ViewLibrarian
         'SearchLibrarianLabel
         '
         Me.SearchLibrarianLabel.AutoSize = True
-        Me.SearchLibrarianLabel.Location = New System.Drawing.Point(9, 6)
+        Me.SearchLibrarianLabel.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchLibrarianLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.SearchLibrarianLabel.Location = New System.Drawing.Point(-2, 25)
         Me.SearchLibrarianLabel.Name = "SearchLibrarianLabel"
-        Me.SearchLibrarianLabel.Size = New System.Drawing.Size(105, 16)
+        Me.SearchLibrarianLabel.Size = New System.Drawing.Size(119, 20)
         Me.SearchLibrarianLabel.TabIndex = 0
         Me.SearchLibrarianLabel.Text = "Search Librarian"
         '
@@ -114,6 +117,7 @@ Partial Class ViewLibrarian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(687, 554)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

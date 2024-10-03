@@ -70,36 +70,36 @@ Public Class MainMenu
         End Using
     End Sub
 
-    Private Sub BorrowBook(isbn As String)
-        Dim today As DateTime = DateTime.Now
+    'Private Sub BorrowBook(isbn As String)
+    '    Dim today As DateTime = DateTime.Now
 
-        If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DueDateTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
-            MessageBox.Show("Enter book ISBN or due date or student phone number.")
-            Exit Sub
-        End If
+    '    If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DueDateTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
+    '        MessageBox.Show("Enter book ISBN or due date or student phone number.")
+    '        Exit Sub
+    '    End If
 
-        Using connection As New SqlConnection(connectionString)
-            Using command As New SqlCommand(
-                "insert into Borrows (BookId,StudentId,BorrowDate,DueDate,LibrarianId)" &
-                "values ((select BookId from Books where ISBN=@isbn)," &
-                "(select StudentId from Students where PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate," &
-                "(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
-                connection)
-                Try
-                    connection.Open()
-                    command.Parameters.AddWithValue("@isbn", isbn)
-                    command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
-                    command.Parameters.AddWithValue("@todayDate", today)
-                    command.Parameters.AddWithValue("@dueDate", DueDateTextBox.Text)
-                    command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
-                    command.ExecuteNonQuery()
-                    MessageBox.Show("Book is Borrowed Successfully.")
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message)
-                End Try
-            End Using
-        End Using
-    End Sub
+    '    Using connection As New SqlConnection(connectionString)
+    '        Using command As New SqlCommand(
+    '            "insert into Borrows (BookId,StudentId,BorrowDate,DueDate,LibrarianId)" &
+    '            "values ((select BookId from Books where ISBN=@isbn)," &
+    '            "(select StudentId from Students where PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate," &
+    '            "(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
+    '            connection)
+    '            Try
+    '                connection.Open()
+    '                command.Parameters.AddWithValue("@isbn", isbn)
+    '                command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
+    '                command.Parameters.AddWithValue("@todayDate", today)
+    '                command.Parameters.AddWithValue("@dueDate", DueDateTextBox.Text)
+    '                command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
+    '                command.ExecuteNonQuery()
+    '                MessageBox.Show("Book is Borrowed Successfully.")
+    '            Catch ex As Exception
+    '                MessageBox.Show(ex.Message)
+    '            End Try
+    '        End Using
+    '    End Using
+    'End Sub
 
     Private Sub ReturnBook(isbn As String)
         Dim todayDate = DateTime.Today
@@ -123,7 +123,7 @@ Public Class MainMenu
                         command.Parameters.AddWithValue("@today", todayDate)
                         command.ExecuteNonQuery()
                         MessageBox.Show("Book returned.")
-                        LoadDataTable()
+                        'LoadDataTable()
                     Catch ex As Exception
                         MessageBox.Show(ex.Message)
                     End Try
@@ -137,5 +137,9 @@ Public Class MainMenu
 
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
         WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
+    End Sub
+
+    Private Sub WelcomeLabel_Click(sender As Object, e As EventArgs) Handles WelcomeLabel.Click
+
     End Sub
 End Class

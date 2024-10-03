@@ -24,7 +24,6 @@ Partial Class ViewBorrow
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.BorrowPanel = New System.Windows.Forms.Panel()
-        Me.DueDateTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.StudentPhoneNumberTextBox = New System.Windows.Forms.TextBox()
         Me.EnterStudentLabel = New System.Windows.Forms.Label()
@@ -39,6 +38,7 @@ Partial Class ViewBorrow
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DaysTextBox = New System.Windows.Forms.ComboBox()
         Me.BorrowPanel.SuspendLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -47,7 +47,8 @@ Partial Class ViewBorrow
         '
         'BorrowPanel
         '
-        Me.BorrowPanel.Controls.Add(Me.DueDateTextBox)
+        Me.BorrowPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.BorrowPanel.Controls.Add(Me.DaysTextBox)
         Me.BorrowPanel.Controls.Add(Me.Label2)
         Me.BorrowPanel.Controls.Add(Me.StudentPhoneNumberTextBox)
         Me.BorrowPanel.Controls.Add(Me.EnterStudentLabel)
@@ -65,25 +66,20 @@ Partial Class ViewBorrow
         Me.BorrowPanel.Size = New System.Drawing.Size(661, 143)
         Me.BorrowPanel.TabIndex = 0
         '
-        'DueDateTextBox
-        '
-        Me.DueDateTextBox.Location = New System.Drawing.Point(12, 68)
-        Me.DueDateTextBox.Name = "DueDateTextBox"
-        Me.DueDateTextBox.Size = New System.Drawing.Size(288, 22)
-        Me.DueDateTextBox.TabIndex = 14
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(9, 49)
+        Me.Label2.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label2.Location = New System.Drawing.Point(45, 62)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(161, 16)
+        Me.Label2.Size = New System.Drawing.Size(42, 20)
         Me.Label2.TabIndex = 13
-        Me.Label2.Text = "Due Date (YYYY-MM-DD)"
+        Me.Label2.Text = "Days"
         '
         'StudentPhoneNumberTextBox
         '
-        Me.StudentPhoneNumberTextBox.Location = New System.Drawing.Point(306, 24)
+        Me.StudentPhoneNumberTextBox.Location = New System.Drawing.Point(346, 37)
         Me.StudentPhoneNumberTextBox.Name = "StudentPhoneNumberTextBox"
         Me.StudentPhoneNumberTextBox.Size = New System.Drawing.Size(262, 22)
         Me.StudentPhoneNumberTextBox.TabIndex = 12
@@ -91,9 +87,11 @@ Partial Class ViewBorrow
         'EnterStudentLabel
         '
         Me.EnterStudentLabel.AutoSize = True
-        Me.EnterStudentLabel.Location = New System.Drawing.Point(307, 5)
+        Me.EnterStudentLabel.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EnterStudentLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.EnterStudentLabel.Location = New System.Drawing.Point(343, 14)
         Me.EnterStudentLabel.Name = "EnterStudentLabel"
-        Me.EnterStudentLabel.Size = New System.Drawing.Size(179, 16)
+        Me.EnterStudentLabel.Size = New System.Drawing.Size(209, 20)
         Me.EnterStudentLabel.TabIndex = 11
         Me.EnterStudentLabel.Text = "Enter Student Phone Number"
         '
@@ -101,29 +99,36 @@ Partial Class ViewBorrow
         '
         Me.RefreshLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.RefreshLabel.AutoSize = True
-        Me.RefreshLabel.Location = New System.Drawing.Point(599, 111)
+        Me.RefreshLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RefreshLabel.LinkColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.RefreshLabel.Location = New System.Drawing.Point(563, 124)
         Me.RefreshLabel.Name = "RefreshLabel"
-        Me.RefreshLabel.Size = New System.Drawing.Size(54, 16)
+        Me.RefreshLabel.Size = New System.Drawing.Size(45, 15)
         Me.RefreshLabel.TabIndex = 10
         Me.RefreshLabel.TabStop = True
-        Me.RefreshLabel.Text = "Refresh"
+        Me.RefreshLabel.Text = "refresh"
         '
         'Borrow_ReturnButton
         '
-        Me.Borrow_ReturnButton.Location = New System.Drawing.Point(12, 104)
+        Me.Borrow_ReturnButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.Borrow_ReturnButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Borrow_ReturnButton.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Borrow_ReturnButton.Location = New System.Drawing.Point(494, 89)
         Me.Borrow_ReturnButton.Name = "Borrow_ReturnButton"
-        Me.Borrow_ReturnButton.Size = New System.Drawing.Size(110, 23)
+        Me.Borrow_ReturnButton.Size = New System.Drawing.Size(114, 31)
         Me.Borrow_ReturnButton.TabIndex = 9
         Me.Borrow_ReturnButton.Text = "Borrow/Return"
-        Me.Borrow_ReturnButton.UseVisualStyleBackColor = True
+        Me.Borrow_ReturnButton.UseVisualStyleBackColor = False
         '
         'ReturnBookOption
         '
         Me.ReturnBookOption.AutoSize = True
         Me.ReturnBookOption.Checked = True
-        Me.ReturnBookOption.Location = New System.Drawing.Point(414, 70)
+        Me.ReturnBookOption.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReturnBookOption.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.ReturnBookOption.Location = New System.Drawing.Point(455, 62)
         Me.ReturnBookOption.Name = "ReturnBookOption"
-        Me.ReturnBookOption.Size = New System.Drawing.Size(99, 20)
+        Me.ReturnBookOption.Size = New System.Drawing.Size(111, 24)
         Me.ReturnBookOption.TabIndex = 8
         Me.ReturnBookOption.TabStop = True
         Me.ReturnBookOption.Text = "Return Book"
@@ -132,9 +137,11 @@ Partial Class ViewBorrow
         'BorrowBookOption
         '
         Me.BorrowBookOption.AutoSize = True
-        Me.BorrowBookOption.Location = New System.Drawing.Point(306, 70)
+        Me.BorrowBookOption.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BorrowBookOption.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.BorrowBookOption.Location = New System.Drawing.Point(346, 62)
         Me.BorrowBookOption.Name = "BorrowBookOption"
-        Me.BorrowBookOption.Size = New System.Drawing.Size(102, 20)
+        Me.BorrowBookOption.Size = New System.Drawing.Size(114, 24)
         Me.BorrowBookOption.TabIndex = 7
         Me.BorrowBookOption.TabStop = True
         Me.BorrowBookOption.Text = "Borrow Book"
@@ -152,7 +159,7 @@ Partial Class ViewBorrow
         '
         'ISBNTextBox
         '
-        Me.ISBNTextBox.Location = New System.Drawing.Point(12, 24)
+        Me.ISBNTextBox.Location = New System.Drawing.Point(48, 37)
         Me.ISBNTextBox.Name = "ISBNTextBox"
         Me.ISBNTextBox.Size = New System.Drawing.Size(288, 22)
         Me.ISBNTextBox.TabIndex = 2
@@ -160,15 +167,18 @@ Partial Class ViewBorrow
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 5)
+        Me.Label1.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Label1.Location = New System.Drawing.Point(45, 14)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(72, 16)
+        Me.Label1.Size = New System.Drawing.Size(84, 20)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Enter ISBN"
         '
         'BorrowDataTable
         '
+        Me.BorrowDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.BorrowDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.BorrowDataTable.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BorrowDataTable.Location = New System.Drawing.Point(3, 154)
@@ -179,15 +189,15 @@ Partial Class ViewBorrow
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.ColumnCount = 1
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.BorrowPanel, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.BorrowDataTable, 0, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 2
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.43682!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.56318!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(669, 554)
         Me.TableLayoutPanel2.TabIndex = 1
         '
@@ -202,6 +212,15 @@ Partial Class ViewBorrow
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
         Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
+        '
+        'DaysTextBox
+        '
+        Me.DaysTextBox.FormattingEnabled = True
+        Me.DaysTextBox.Items.AddRange(New Object() {"2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30"})
+        Me.DaysTextBox.Location = New System.Drawing.Point(49, 93)
+        Me.DaysTextBox.Name = "DaysTextBox"
+        Me.DaysTextBox.Size = New System.Drawing.Size(287, 24)
+        Me.DaysTextBox.TabIndex = 15
         '
         'ViewBorrow
         '
@@ -233,8 +252,8 @@ Partial Class ViewBorrow
     Friend WithEvents RefreshLabel As LinkLabel
     Friend WithEvents StudentPhoneNumberTextBox As TextBox
     Friend WithEvents EnterStudentLabel As Label
-    Friend WithEvents DueDateTextBox As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DaysTextBox As ComboBox
 End Class

@@ -40,9 +40,12 @@ Partial Class AddBook
         Me.CategoryComboBox = New System.Windows.Forms.ComboBox()
         Me.PubDateMonthCalendar = New System.Windows.Forms.MonthCalendar()
         Me.PublisherComboBox = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -96,9 +99,12 @@ Partial Class AddBook
         Me.TableLayoutPanel2.Controls.Add(Me.CategoryComboBox, 1, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.PubDateMonthCalendar, 1, 5)
         Me.TableLayoutPanel2.Controls.Add(Me.PublisherComboBox, 1, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 6)
+        Me.TableLayoutPanel2.Controls.Add(Me.NumericUpDown1, 1, 6)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 6
+        Me.TableLayoutPanel2.RowCount = 7
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -241,6 +247,25 @@ Partial Class AddBook
         Me.PublisherComboBox.TabIndex = 13
         Me.PublisherComboBox.ValueMember = "Publisher"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(3, 345)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 13)
+        Me.Label1.TabIndex = 14
+        Me.Label1.Text = "Quantity"
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(76, 348)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(120, 20)
+        Me.NumericUpDown1.TabIndex = 15
+        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
         'AddBook
         '
         Me.AcceptButton = Me.OK_Button
@@ -262,6 +287,7 @@ Partial Class AddBook
         Me.TableLayoutPanel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -283,4 +309,6 @@ Partial Class AddBook
     Friend WithEvents PublisherComboBox As ComboBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents AuthorDescriptionLabel As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents NumericUpDown1 As NumericUpDown
 End Class
