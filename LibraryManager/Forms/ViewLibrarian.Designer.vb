@@ -67,7 +67,7 @@ Partial Class ViewLibrarian
         'RefreshButton
         '
         Me.RefreshButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RefreshButton.Location = New System.Drawing.Point(604, 3)
+        Me.RefreshButton.Location = New System.Drawing.Point(213, 48)
         Me.RefreshButton.Name = "RefreshButton"
         Me.RefreshButton.Size = New System.Drawing.Size(75, 23)
         Me.RefreshButton.TabIndex = 2

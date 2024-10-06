@@ -4,7 +4,6 @@ Imports System.Data.SqlClient
 
 Public Class MainMenu
     Dim connectionString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
-    Dim table As New DataTable()
 
     Private Sub MainMenu_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Application.Exit()
@@ -38,29 +37,38 @@ Public Class MainMenu
         ViewLibrarian.ShowDialog()
     End Sub
 
-    Private Sub ScanTextBox_TextChanged(sender As Object, e As EventArgs) Handles ScanTextBox.TextChanged
+    Private Sub ScanTextBox_TextChanged(sender As Object, e As EventArgs) Handles BarcodeTextBox.TextChanged
         ScanAction()
+    End Sub
+
+    Private Sub AddBook()
+        Dim bookisbnCode As String = BarcodeTextBox.Text
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlDataAdapter("SELECT * FROM Books WHERE ISBN=@isbnValue", connection)
+                Try
+                    connection.Open()
+                    command.SelectCommand.Parameters.AddWithValue("@isbnValue", bookisbnCode)
+                Catch ex As Exception
+                    MessageBox.Show("Book not found.")
+                End Try
+            End Using
+        End Using
     End Sub
 
     Private Sub ScanAction()
         Try
-            Dim text = Convert.ToInt64(ScanTextBox.Text)
+            Dim text = Convert.ToInt64(BarcodeTextBox.Text)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
-        Dim query = "SELECT Books.ISBN,[Books].[Title],Books.Authors,Borrows.BorrowDate,Borrows.DueDate," &
-                    "Borrows.ReturnDate,Librarians.FirstName,Librarians.LastName " &
-                    "FROM Borrows " &
-                    "FULL OUTER JOIN Books ON Borrows.BookId=Books.BookId " &
-                    "FULL OUTER JOIN Librarians ON Borrows.LibrarianId=Librarians.LibrarianId " &
-                    "WHERE ISBN=@text " &
-                    "ORDER BY Books.Title"
+        Dim query = "SELECT * FROM Books" &
+                    "WHERE ISBN=@text "
         Using conn As New SqlConnection(connectionString)
             Using adapter As New SqlDataAdapter(query, conn)
                 adapter.SelectCommand.Parameters.AddWithValue("@text", Text)
                 Try
                     conn.Open()
-                    table.Clear()
+                    Dim table As New DataTable()
                     adapter.Fill(table)
                     ScannerDataTable.DataSource = table
                 Catch ex As Exception
@@ -137,9 +145,5 @@ Public Class MainMenu
 
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
         WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
-    End Sub
-
-    Private Sub WelcomeLabel_Click(sender As Object, e As EventArgs) Handles WelcomeLabel.Click
-
     End Sub
 End Class

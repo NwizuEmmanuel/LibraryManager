@@ -41,11 +41,12 @@ Partial Class AddBook
         Me.PubDateMonthCalendar = New System.Windows.Forms.MonthCalendar()
         Me.PublisherComboBox = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.Quantity = New System.Windows.Forms.NumericUpDown()
+        Me.ExistingBookCheckBox = New System.Windows.Forms.CheckBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Quantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -87,23 +88,24 @@ Partial Class AddBook
         Me.TableLayoutPanel2.ColumnCount = 2
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.BookTitleTextBox, 1, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.TitleLabel, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.ISBNLabel, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.AuthorsLabel, 0, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.CategoryLabel, 0, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.PublisherLabel, 0, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.PublisherDate, 0, 5)
-        Me.TableLayoutPanel2.Controls.Add(Me.ISBNTextBox, 1, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Panel1, 1, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.CategoryComboBox, 1, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.PubDateMonthCalendar, 1, 5)
-        Me.TableLayoutPanel2.Controls.Add(Me.PublisherComboBox, 1, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 6)
-        Me.TableLayoutPanel2.Controls.Add(Me.NumericUpDown1, 1, 6)
+        Me.TableLayoutPanel2.Controls.Add(Me.BookTitleTextBox, 1, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.TitleLabel, 0, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.ISBNLabel, 0, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.AuthorsLabel, 0, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.CategoryLabel, 0, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.PublisherLabel, 0, 5)
+        Me.TableLayoutPanel2.Controls.Add(Me.PublisherDate, 0, 6)
+        Me.TableLayoutPanel2.Controls.Add(Me.ISBNTextBox, 1, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.Panel1, 1, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.CategoryComboBox, 1, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.PubDateMonthCalendar, 1, 6)
+        Me.TableLayoutPanel2.Controls.Add(Me.PublisherComboBox, 1, 5)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 7)
+        Me.TableLayoutPanel2.Controls.Add(Me.Quantity, 1, 7)
+        Me.TableLayoutPanel2.Controls.Add(Me.ExistingBookCheckBox, 0, 0)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 7
+        Me.TableLayoutPanel2.RowCount = 8
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -111,22 +113,23 @@ Partial Class AddBook
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(520, 385)
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(520, 400)
         Me.TableLayoutPanel2.TabIndex = 1
         '
         'BookTitleTextBox
         '
         Me.BookTitleTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BookTitleTextBox.Location = New System.Drawing.Point(76, 29)
+        Me.BookTitleTextBox.Location = New System.Drawing.Point(135, 52)
         Me.BookTitleTextBox.Name = "BookTitleTextBox"
-        Me.BookTitleTextBox.Size = New System.Drawing.Size(441, 20)
+        Me.BookTitleTextBox.Size = New System.Drawing.Size(382, 20)
         Me.BookTitleTextBox.TabIndex = 8
         '
         'TitleLabel
         '
         Me.TitleLabel.AutoSize = True
-        Me.TitleLabel.Location = New System.Drawing.Point(3, 26)
+        Me.TitleLabel.Location = New System.Drawing.Point(3, 49)
         Me.TitleLabel.Name = "TitleLabel"
         Me.TitleLabel.Size = New System.Drawing.Size(55, 13)
         Me.TitleLabel.TabIndex = 2
@@ -135,7 +138,7 @@ Partial Class AddBook
         'ISBNLabel
         '
         Me.ISBNLabel.AutoSize = True
-        Me.ISBNLabel.Location = New System.Drawing.Point(3, 0)
+        Me.ISBNLabel.Location = New System.Drawing.Point(3, 23)
         Me.ISBNLabel.Name = "ISBNLabel"
         Me.ISBNLabel.Size = New System.Drawing.Size(32, 13)
         Me.ISBNLabel.TabIndex = 0
@@ -144,7 +147,7 @@ Partial Class AddBook
         'AuthorsLabel
         '
         Me.AuthorsLabel.AutoSize = True
-        Me.AuthorsLabel.Location = New System.Drawing.Point(3, 52)
+        Me.AuthorsLabel.Location = New System.Drawing.Point(3, 75)
         Me.AuthorsLabel.Name = "AuthorsLabel"
         Me.AuthorsLabel.Size = New System.Drawing.Size(43, 13)
         Me.AuthorsLabel.TabIndex = 3
@@ -153,7 +156,7 @@ Partial Class AddBook
         'CategoryLabel
         '
         Me.CategoryLabel.AutoSize = True
-        Me.CategoryLabel.Location = New System.Drawing.Point(3, 111)
+        Me.CategoryLabel.Location = New System.Drawing.Point(3, 134)
         Me.CategoryLabel.Name = "CategoryLabel"
         Me.CategoryLabel.Size = New System.Drawing.Size(49, 13)
         Me.CategoryLabel.TabIndex = 4
@@ -162,7 +165,7 @@ Partial Class AddBook
         'PublisherLabel
         '
         Me.PublisherLabel.AutoSize = True
-        Me.PublisherLabel.Location = New System.Drawing.Point(3, 138)
+        Me.PublisherLabel.Location = New System.Drawing.Point(3, 161)
         Me.PublisherLabel.Name = "PublisherLabel"
         Me.PublisherLabel.Size = New System.Drawing.Size(50, 13)
         Me.PublisherLabel.TabIndex = 5
@@ -171,7 +174,7 @@ Partial Class AddBook
         'PublisherDate
         '
         Me.PublisherDate.AutoSize = True
-        Me.PublisherDate.Location = New System.Drawing.Point(3, 165)
+        Me.PublisherDate.Location = New System.Drawing.Point(3, 188)
         Me.PublisherDate.Name = "PublisherDate"
         Me.PublisherDate.Size = New System.Drawing.Size(67, 13)
         Me.PublisherDate.TabIndex = 6
@@ -181,9 +184,9 @@ Partial Class AddBook
         '
         Me.ISBNTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ISBNTextBox.Location = New System.Drawing.Point(76, 3)
+        Me.ISBNTextBox.Location = New System.Drawing.Point(135, 26)
         Me.ISBNTextBox.Name = "ISBNTextBox"
-        Me.ISBNTextBox.Size = New System.Drawing.Size(441, 20)
+        Me.ISBNTextBox.Size = New System.Drawing.Size(382, 20)
         Me.ISBNTextBox.TabIndex = 7
         '
         'Panel1
@@ -191,10 +194,10 @@ Partial Class AddBook
         Me.Panel1.Controls.Add(Me.AuthorDescriptionLabel)
         Me.Panel1.Controls.Add(Me.AuthorTextBox)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(73, 52)
+        Me.Panel1.Location = New System.Drawing.Point(132, 75)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(447, 59)
+        Me.Panel1.Size = New System.Drawing.Size(388, 59)
         Me.Panel1.TabIndex = 9
         '
         'AuthorDescriptionLabel
@@ -212,7 +215,7 @@ Partial Class AddBook
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.AuthorTextBox.Location = New System.Drawing.Point(3, 3)
         Me.AuthorTextBox.Name = "AuthorTextBox"
-        Me.AuthorTextBox.Size = New System.Drawing.Size(441, 20)
+        Me.AuthorTextBox.Size = New System.Drawing.Size(382, 20)
         Me.AuthorTextBox.TabIndex = 1
         '
         'CategoryComboBox
@@ -223,15 +226,15 @@ Partial Class AddBook
         Me.CategoryComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList
         Me.CategoryComboBox.DisplayMember = "Category"
         Me.CategoryComboBox.FormattingEnabled = True
-        Me.CategoryComboBox.Location = New System.Drawing.Point(76, 114)
+        Me.CategoryComboBox.Location = New System.Drawing.Point(135, 137)
         Me.CategoryComboBox.Name = "CategoryComboBox"
-        Me.CategoryComboBox.Size = New System.Drawing.Size(441, 21)
+        Me.CategoryComboBox.Size = New System.Drawing.Size(382, 21)
         Me.CategoryComboBox.TabIndex = 10
         Me.CategoryComboBox.ValueMember = "Category"
         '
         'PubDateMonthCalendar
         '
-        Me.PubDateMonthCalendar.Location = New System.Drawing.Point(82, 174)
+        Me.PubDateMonthCalendar.Location = New System.Drawing.Point(141, 197)
         Me.PubDateMonthCalendar.Name = "PubDateMonthCalendar"
         Me.PubDateMonthCalendar.TabIndex = 12
         '
@@ -241,30 +244,40 @@ Partial Class AddBook
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PublisherComboBox.DisplayMember = "Publisher"
         Me.PublisherComboBox.FormattingEnabled = True
-        Me.PublisherComboBox.Location = New System.Drawing.Point(76, 141)
+        Me.PublisherComboBox.Location = New System.Drawing.Point(135, 164)
         Me.PublisherComboBox.Name = "PublisherComboBox"
-        Me.PublisherComboBox.Size = New System.Drawing.Size(441, 21)
+        Me.PublisherComboBox.Size = New System.Drawing.Size(382, 21)
         Me.PublisherComboBox.TabIndex = 13
         Me.PublisherComboBox.ValueMember = "Publisher"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 345)
+        Me.Label1.Location = New System.Drawing.Point(3, 368)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Quantity"
         '
-        'NumericUpDown1
+        'Quantity
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(76, 348)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(120, 20)
-        Me.NumericUpDown1.TabIndex = 15
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Quantity.Location = New System.Drawing.Point(135, 371)
+        Me.Quantity.Maximum = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.Quantity.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Quantity.Name = "Quantity"
+        Me.Quantity.Size = New System.Drawing.Size(120, 20)
+        Me.Quantity.TabIndex = 15
+        Me.Quantity.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'ExistingBookCheckBox
+        '
+        Me.ExistingBookCheckBox.AutoSize = True
+        Me.ExistingBookCheckBox.Location = New System.Drawing.Point(3, 3)
+        Me.ExistingBookCheckBox.Name = "ExistingBookCheckBox"
+        Me.ExistingBookCheckBox.Size = New System.Drawing.Size(126, 17)
+        Me.ExistingBookCheckBox.TabIndex = 16
+        Me.ExistingBookCheckBox.Text = "Adding Existing Book"
+        Me.ExistingBookCheckBox.UseVisualStyleBackColor = True
         '
         'AddBook
         '
@@ -287,7 +300,7 @@ Partial Class AddBook
         Me.TableLayoutPanel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Quantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -310,5 +323,6 @@ Partial Class AddBook
     Friend WithEvents Panel1 As Panel
     Friend WithEvents AuthorDescriptionLabel As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents Quantity As NumericUpDown
+    Friend WithEvents ExistingBookCheckBox As CheckBox
 End Class
