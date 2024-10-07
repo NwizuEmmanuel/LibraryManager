@@ -18,7 +18,7 @@ Public Class MainMenu
     End Sub
 
     Private Sub NewBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewBookToolStripMenuItem.Click
-        AddBook.ShowDialog()
+        AddBookDialog.ShowDialog()
     End Sub
 
     Private Sub NewStudentToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewStudentToolStripMenuItem.Click
@@ -37,42 +37,32 @@ Public Class MainMenu
         ViewLibrarian.ShowDialog()
     End Sub
 
-    Private Sub ScanTextBox_TextChanged(sender As Object, e As EventArgs) Handles BarcodeTextBox.TextChanged
-        ScanAction()
-    End Sub
-
     Private Sub AddBook()
         Dim bookisbnCode As String = BarcodeTextBox.Text
+        Dim newTable As New DataTable()
         Using connection As New SqlConnection(connectionString)
-            Using command As New SqlDataAdapter("SELECT * FROM Books WHERE ISBN=@isbnValue", connection)
+            Using command As New SqlCommand(
+                "SELECT Title,ISBN,Authors,Category FROM Books WHERE ISBN=@isbnValue",
+                connection)
                 Try
                     connection.Open()
-                    command.SelectCommand.Parameters.AddWithValue("@isbnValue", bookisbnCode)
-                Catch ex As Exception
-                    MessageBox.Show("Book not found.")
-                End Try
-            End Using
-        End Using
-    End Sub
+                    command.Parameters.AddWithValue("@isbnValue", bookisbnCode)
+                    Dim adapter As New SqlDataAdapter(command)
 
-    Private Sub ScanAction()
-        Try
-            Dim text = Convert.ToInt64(BarcodeTextBox.Text)
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
-        Dim query = "SELECT * FROM Books" &
-                    "WHERE ISBN=@text "
-        Using conn As New SqlConnection(connectionString)
-            Using adapter As New SqlDataAdapter(query, conn)
-                adapter.SelectCommand.Parameters.AddWithValue("@text", Text)
-                Try
-                    conn.Open()
-                    Dim table As New DataTable()
-                    adapter.Fill(table)
-                    ScannerDataTable.DataSource = table
+                    adapter.Fill(newTable)
+
+                    Dim currentDataTable As DataTable = TryCast(ScannerDataTable.DataSource, DataTable)
+
+                    If currentDataTable Is Nothing Then
+                        ScannerDataTable.DataSource = newTable
+                    Else
+                        For Each row As DataRow In newTable.Rows
+                            currentDataTable.ImportRow(row)
+                        Next
+                    End If
+                    BarcodeTextBox.Clear()
                 Catch ex As Exception
-                    MessageBox.Show(ex.Message)
+                    MessageBox.Show("Book not found. " & ex.Message)
                 End Try
             End Using
         End Using
@@ -145,5 +135,51 @@ Public Class MainMenu
 
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
         WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
+        BarcodeTextBox.Focus()
+        ScannerDataTable.ReadOnly = True
     End Sub
+
+    Private Sub BarcodeTextBox_TextChanged(sender As Object, e As EventArgs) Handles BarcodeTextBox.TextChanged
+        If Not ManualModeCheckBox.Checked Then
+            AddBook()
+        End If
+    End Sub
+
+    Private Sub BarcodeTextBox_KeyDown(sender As Object, e As KeyEventArgs) Handles BarcodeTextBox.KeyDown
+        If e.KeyCode = Keys.Enter And ManualModeCheckBox.Checked Then
+            AddBook()
+        End If
+    End Sub
+
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+        DeleteSelectedRow()
+    End Sub
+
+    Private Sub DeleteSelectedRow()
+        ' Check if any row is selected
+        If ScannerDataTable.SelectedRows.Count > 0 Then
+            ' Get the selected row's index
+            Dim rowIndex As Integer = ScannerDataTable.SelectedRows(0).Index
+
+            ' Get the current DataTable bound to the DataGridView
+            Dim currentTable As DataTable = TryCast(ScannerDataTable.DataSource, DataTable)
+
+            If currentTable IsNot Nothing AndAlso rowIndex >= 0 Then
+                ' Get the ISBN or another unique key value for the selected row
+                Dim isbnCode As String = ScannerDataTable.Rows(rowIndex).Cells("ISBN").Value.ToString()
+
+                ' Remove the row from the DataTable
+                currentTable.Rows(rowIndex).Delete()
+
+                ' Update the DataGridView
+                ScannerDataTable.DataSource = currentTable
+                ScannerDataTable.Refresh()
+            Else
+                MessageBox.Show("No valid row selected.")
+            End If
+        Else
+            MessageBox.Show("Please select a row to delete.")
+        End If
+    End Sub
+
 End Class

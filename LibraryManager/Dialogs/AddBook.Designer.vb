@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class AddBook
+Partial Class AddBookDialog
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -279,7 +279,7 @@ Partial Class AddBook
         Me.ExistingBookCheckBox.Text = "Adding Existing Book"
         Me.ExistingBookCheckBox.UseVisualStyleBackColor = True
         '
-        'AddBook
+        'AddBookDialog
         '
         Me.AcceptButton = Me.OK_Button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -291,7 +291,7 @@ Partial Class AddBook
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "AddBook"
+        Me.Name = "AddBookDialog"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "AddBook"

@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.Windows.Forms
 
-Public Class AddBook
+Public Class AddBookDialog
     Dim connString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
 
     Private Function AuthorDataCleaner(data As String)

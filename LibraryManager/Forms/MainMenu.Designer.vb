@@ -42,8 +42,11 @@ Partial Class MainMenu
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ScannerDataTable = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ManualModeCheckBox = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BarcodeTextBox = New System.Windows.Forms.TextBox()
+        Me.DeleteButton = New System.Windows.Forms.Button()
+        Me.ProcessButton = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -205,6 +208,9 @@ Partial Class MainMenu
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.ProcessButton)
+        Me.Panel2.Controls.Add(Me.DeleteButton)
+        Me.Panel2.Controls.Add(Me.ManualModeCheckBox)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.BarcodeTextBox)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -212,6 +218,18 @@ Partial Class MainMenu
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(770, 42)
         Me.Panel2.TabIndex = 2
+        '
+        'ManualModeCheckBox
+        '
+        Me.ManualModeCheckBox.AutoSize = True
+        Me.ManualModeCheckBox.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ManualModeCheckBox.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.ManualModeCheckBox.Location = New System.Drawing.Point(450, 15)
+        Me.ManualModeCheckBox.Name = "ManualModeCheckBox"
+        Me.ManualModeCheckBox.Size = New System.Drawing.Size(122, 24)
+        Me.ManualModeCheckBox.TabIndex = 2
+        Me.ManualModeCheckBox.Text = "Manual Mode"
+        Me.ManualModeCheckBox.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -232,6 +250,33 @@ Partial Class MainMenu
         Me.BarcodeTextBox.Name = "BarcodeTextBox"
         Me.BarcodeTextBox.Size = New System.Drawing.Size(291, 22)
         Me.BarcodeTextBox.TabIndex = 0
+        '
+        'DeleteButton
+        '
+        Me.DeleteButton.BackColor = System.Drawing.Color.White
+        Me.DeleteButton.FlatAppearance.BorderSize = 0
+        Me.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DeleteButton.ForeColor = System.Drawing.Color.Black
+        Me.DeleteButton.Location = New System.Drawing.Point(579, 13)
+        Me.DeleteButton.Name = "DeleteButton"
+        Me.DeleteButton.Size = New System.Drawing.Size(75, 23)
+        Me.DeleteButton.TabIndex = 3
+        Me.DeleteButton.Text = "Delete"
+        Me.DeleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.DeleteButton.UseVisualStyleBackColor = False
+        '
+        'ProcessButton
+        '
+        Me.ProcessButton.BackColor = System.Drawing.Color.White
+        Me.ProcessButton.FlatAppearance.BorderSize = 0
+        Me.ProcessButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ProcessButton.ForeColor = System.Drawing.Color.Black
+        Me.ProcessButton.Location = New System.Drawing.Point(660, 13)
+        Me.ProcessButton.Name = "ProcessButton"
+        Me.ProcessButton.Size = New System.Drawing.Size(75, 23)
+        Me.ProcessButton.TabIndex = 4
+        Me.ProcessButton.Text = "Process"
+        Me.ProcessButton.UseVisualStyleBackColor = False
         '
         'MainMenu
         '
@@ -281,4 +326,7 @@ Partial Class MainMenu
     Friend WithEvents BarcodeTextBox As TextBox
     Friend WithEvents BorrowedBookToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label2 As Label
+    Friend WithEvents ManualModeCheckBox As CheckBox
+    Friend WithEvents ProcessButton As Button
+    Friend WithEvents DeleteButton As Button
 End Class
