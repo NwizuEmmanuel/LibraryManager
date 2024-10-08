@@ -41,24 +41,26 @@ Partial Class MainMenu
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ScannerDataTable = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.DeleteButton = New System.Windows.Forms.Button()
         Me.ManualModeCheckBox = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BarcodeTextBox = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.DeleteBookButton = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ProcessButton = New System.Windows.Forms.Button()
+        Me.ReturnBookButton = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.BorrowBookButton = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StudentIDTextbox = New System.Windows.Forms.TextBox()
         Me.DueDateComboBox = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ClearButton = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ReturnStudentIdTextBox = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -167,7 +169,7 @@ Partial Class MainMenu
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(776, 570)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(776, 611)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'Panel1
@@ -208,9 +210,10 @@ Partial Class MainMenu
         Me.ScannerDataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.ScannerDataTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.ScannerDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ScannerDataTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        Me.ScannerDataTable.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ScannerDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.ScannerDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ScannerDataTable.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ScannerDataTable.GridColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(136, Byte), Integer))
         Me.ScannerDataTable.Location = New System.Drawing.Point(3, 149)
         Me.ScannerDataTable.Name = "ScannerDataTable"
@@ -220,7 +223,6 @@ Partial Class MainMenu
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.DeleteButton)
         Me.Panel2.Controls.Add(Me.ManualModeCheckBox)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.BarcodeTextBox)
@@ -229,21 +231,6 @@ Partial Class MainMenu
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(770, 42)
         Me.Panel2.TabIndex = 2
-        '
-        'DeleteButton
-        '
-        Me.DeleteButton.BackColor = System.Drawing.Color.SlateBlue
-        Me.DeleteButton.FlatAppearance.BorderSize = 0
-        Me.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DeleteButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DeleteButton.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.DeleteButton.Location = New System.Drawing.Point(568, 4)
-        Me.DeleteButton.Name = "DeleteButton"
-        Me.DeleteButton.Size = New System.Drawing.Size(76, 31)
-        Me.DeleteButton.TabIndex = 3
-        Me.DeleteButton.Text = "Delete"
-        Me.DeleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.DeleteButton.UseVisualStyleBackColor = False
         '
         'ManualModeCheckBox
         '
@@ -285,36 +272,38 @@ Partial Class MainMenu
         Me.Panel3.Controls.Add(Me.GroupBox3)
         Me.Panel3.Controls.Add(Me.GroupBox2)
         Me.Panel3.Controls.Add(Me.GroupBox1)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(3, 371)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(748, 187)
+        Me.Panel3.Size = New System.Drawing.Size(770, 237)
         Me.Panel3.TabIndex = 3
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Button1)
+        Me.GroupBox3.Controls.Add(Me.ClearButton)
+        Me.GroupBox3.Controls.Add(Me.DeleteBookButton)
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(381, 84)
+        Me.GroupBox3.Location = New System.Drawing.Point(381, 141)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(293, 87)
         Me.GroupBox3.TabIndex = 10
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Delete Section"
         '
-        'Button1
+        'DeleteBookButton
         '
-        Me.Button1.BackColor = System.Drawing.Color.SlateBlue
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Button1.Location = New System.Drawing.Point(6, 45)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(76, 31)
-        Me.Button1.TabIndex = 7
-        Me.Button1.Text = "Delete"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.DeleteBookButton.BackColor = System.Drawing.Color.SlateBlue
+        Me.DeleteBookButton.FlatAppearance.BorderSize = 0
+        Me.DeleteBookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DeleteBookButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DeleteBookButton.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.DeleteBookButton.Location = New System.Drawing.Point(6, 45)
+        Me.DeleteBookButton.Name = "DeleteBookButton"
+        Me.DeleteBookButton.Size = New System.Drawing.Size(76, 31)
+        Me.DeleteBookButton.TabIndex = 7
+        Me.DeleteBookButton.Text = "Delete"
+        Me.DeleteBookButton.UseVisualStyleBackColor = False
         '
         'Label2
         '
@@ -329,13 +318,15 @@ Partial Class MainMenu
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.ReturnStudentIdTextBox)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.ProcessButton)
+        Me.GroupBox2.Controls.Add(Me.ReturnBookButton)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.GroupBox2.Location = New System.Drawing.Point(381, 3)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(293, 78)
+        Me.GroupBox2.Size = New System.Drawing.Size(293, 137)
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Return Section"
@@ -351,19 +342,19 @@ Partial Class MainMenu
         Me.Label6.TabIndex = 5
         Me.Label6.Text = "The books in the table will returned"
         '
-        'ProcessButton
+        'ReturnBookButton
         '
-        Me.ProcessButton.BackColor = System.Drawing.Color.SlateBlue
-        Me.ProcessButton.FlatAppearance.BorderSize = 0
-        Me.ProcessButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ProcessButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProcessButton.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.ProcessButton.Location = New System.Drawing.Point(6, 37)
-        Me.ProcessButton.Name = "ProcessButton"
-        Me.ProcessButton.Size = New System.Drawing.Size(115, 31)
-        Me.ProcessButton.TabIndex = 4
-        Me.ProcessButton.Text = "Return book(s)"
-        Me.ProcessButton.UseVisualStyleBackColor = False
+        Me.ReturnBookButton.BackColor = System.Drawing.Color.SlateBlue
+        Me.ReturnBookButton.FlatAppearance.BorderSize = 0
+        Me.ReturnBookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ReturnBookButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReturnBookButton.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ReturnBookButton.Location = New System.Drawing.Point(9, 100)
+        Me.ReturnBookButton.Name = "ReturnBookButton"
+        Me.ReturnBookButton.Size = New System.Drawing.Size(115, 31)
+        Me.ReturnBookButton.TabIndex = 4
+        Me.ReturnBookButton.Text = "Return book(s)"
+        Me.ReturnBookButton.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
@@ -377,10 +368,21 @@ Partial Class MainMenu
         Me.GroupBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.GroupBox1.Location = New System.Drawing.Point(9, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(366, 168)
+        Me.GroupBox1.Size = New System.Drawing.Size(366, 225)
         Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Borrow Section"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(6, 21)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(240, 17)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "The books in the table will be Borrowed"
         '
         'BorrowBookButton
         '
@@ -439,23 +441,46 @@ Partial Class MainMenu
         Me.DueDateComboBox.Size = New System.Drawing.Size(167, 25)
         Me.DueDateComboBox.TabIndex = 2
         '
-        'Label3
+        'ClearButton
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(6, 21)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(240, 17)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "The books in the table will be Borrowed"
+        Me.ClearButton.BackColor = System.Drawing.Color.SlateBlue
+        Me.ClearButton.FlatAppearance.BorderSize = 0
+        Me.ClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ClearButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ClearButton.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ClearButton.Location = New System.Drawing.Point(92, 45)
+        Me.ClearButton.Name = "ClearButton"
+        Me.ClearButton.Size = New System.Drawing.Size(76, 31)
+        Me.ClearButton.TabIndex = 3
+        Me.ClearButton.Text = "Clear"
+        Me.ClearButton.UseVisualStyleBackColor = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(6, 44)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(68, 17)
+        Me.Label7.TabIndex = 7
+        Me.Label7.Text = "Student ID"
+        '
+        'ReturnStudentIdTextBox
+        '
+        Me.ReturnStudentIdTextBox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReturnStudentIdTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.ReturnStudentIdTextBox.Location = New System.Drawing.Point(9, 64)
+        Me.ReturnStudentIdTextBox.Name = "ReturnStudentIdTextBox"
+        Me.ReturnStudentIdTextBox.Size = New System.Drawing.Size(167, 25)
+        Me.ReturnStudentIdTextBox.TabIndex = 6
         '
         'MainMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ClientSize = New System.Drawing.Size(776, 595)
+        Me.ClientSize = New System.Drawing.Size(776, 636)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -506,8 +531,7 @@ Partial Class MainMenu
     Friend WithEvents BarcodeTextBox As TextBox
     Friend WithEvents BorrowedBookToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ManualModeCheckBox As CheckBox
-    Friend WithEvents ProcessButton As Button
-    Friend WithEvents DeleteButton As Button
+    Friend WithEvents ReturnBookButton As Button
     Friend WithEvents Panel3 As Panel
     Friend WithEvents DueDateComboBox As ComboBox
     Friend WithEvents StudentIDTextbox As TextBox
@@ -518,7 +542,10 @@ Partial Class MainMenu
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label6 As Label
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents DeleteBookButton As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents ClearButton As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents ReturnStudentIdTextBox As TextBox
 End Class

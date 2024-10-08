@@ -1,9 +1,11 @@
 ﻿Imports System.ComponentModel
 Imports System.Configuration
 Imports System.Data.SqlClient
+Imports System.Net
 
 Public Class MainMenu
     Dim connectionString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
+    Dim currentDataTable As DataTable
 
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
         WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
@@ -80,7 +82,7 @@ Public Class MainMenu
 
                     adapter.Fill(newTable)
 
-                    Dim currentDataTable As DataTable = TryCast(ScannerDataTable.DataSource, DataTable)
+                    currentDataTable = TryCast(ScannerDataTable.DataSource, DataTable)
 
                     If currentDataTable Is Nothing Then
                         ScannerDataTable.DataSource = newTable
@@ -115,7 +117,7 @@ Public Class MainMenu
         End If
     End Sub
 
-    Private Sub DeleteButton_Click(sender As Object, e As EventArgs) Handles DeleteButton.Click
+    Private Sub DeleteButton_Click(sender As Object, e As EventArgs)
         DeleteSelectedRow()
     End Sub
 
@@ -146,7 +148,8 @@ Public Class MainMenu
         End If
     End Sub
 
-    Private Sub BorrowBook(isbnValue As String, studentId As Integer, borrowDate As Date, dueDate As Date, librarianId As Integer)
+    Private Function BorrowBook(isbnValue As String, studentId As Integer, borrowDate As Date, dueDate As Date, librarianId As Integer) As Boolean
+        Dim hasNoError = True
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand(
             "INSERT INTO Borrows (BookId, StudentId, BorrowDate, DueDate, LibrarianId) " &
@@ -162,8 +165,8 @@ Public Class MainMenu
                 Try
                     connection.Open()
                     command.ExecuteNonQuery()
-                    MessageBox.Show("Book borrowed successfully.")
                 Catch ex As Exception
+                    hasNoError = False
                     MessageBox.Show("Error while borrowing the book: " & ex.Message)
                 End Try
             End Using
@@ -172,11 +175,80 @@ Public Class MainMenu
                     command.Parameters.AddWithValue("@isbn", isbnValue)
                     command.ExecuteNonQuery()
                 Catch ex As Exception
+                    hasNoError = False
+                    MessageBox.Show("Error update book quatity: " & ex.Message)
+                End Try
+            End Using
+        End Using
+        Return hasNoError
+    End Function
+
+    Private Function ReturnBook(isbnValue As String, studentId As Integer, returnDate As Date) As Boolean
+        Dim hasNoError = True
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+            "UPDATE Borrows SET ReturnDate = @ReturnDate " &
+            "WHERE BookId = (SELECT BookId FROM Books WHERE ISBN=@isbn) AND StudentId = @StudentId AND ReturnDate IS NULL;", connection)
+
+                ' Set parameters
+                command.Parameters.AddWithValue("@ReturnDate", returnDate)
+                command.Parameters.AddWithValue("@isbn", isbnValue)
+                command.Parameters.AddWithValue("@StudentId", studentId)
+
+                Try
+                    connection.Open()
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+                    If rowsAffected = 0 Then
+                        MessageBox.Show("No active borrow record found for this book and student.")
+                        hasNoError = False
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error while returning the book: " & ex.Message)
+                    hasNoError = False
+                End Try
+            End Using
+            Using command As New SqlCommand("UPDATE Books SET Quantity=Quantity + 1 WHERE ISBN=@isbn", connection)
+                Try
+                    command.Parameters.AddWithValue("@isbn", isbnValue)
+                    command.ExecuteNonQuery()
+                Catch ex As Exception
+                    hasNoError = False
                     MessageBox.Show("Error while borrowing the book: " & ex.Message)
                 End Try
             End Using
         End Using
-    End Sub
+        Return hasNoError
+    End Function
+
+    Private Function CanBorrowBook(studentId As Integer, isbnValue As String) As Boolean
+        Dim canBorrow As Boolean = True
+
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+            "SELECT COUNT(*) FROM Borrows WHERE BookId =(select BookId from Books where ISBN=@isbn) AND StudentId = @StudentId AND ReturnDate IS NULL", connection)
+
+                ' Add parameters
+                command.Parameters.AddWithValue("@isbn", isbnValue)
+                command.Parameters.AddWithValue("@StudentId", studentId)
+
+                Try
+                    connection.Open()
+                    Dim borrowCount As Integer = Convert.ToInt32(command.ExecuteScalar())
+
+                    If borrowCount > 0 Then
+                        ' Student has already borrowed this book and not returned it
+                        canBorrow = False
+                    End If
+
+                Catch ex As Exception
+                    MessageBox.Show("Error checking borrow status: " & ex.Message)
+                End Try
+            End Using
+        End Using
+
+        Return canBorrow
+    End Function
+
 
     Private Sub BorrowBookButton_Click(sender As Object, e As EventArgs) Handles BorrowBookButton.Click
         ' Loop through each row in the DataGridView
@@ -191,10 +263,44 @@ Public Class MainMenu
                 Dim borrowDate As Date = DateTime.Now
                 Dim dueDate As Date = borrowDate.AddDays(DueDateComboBox.Text)
                 Dim librarianId As Integer = Integer.Parse(Whoami.ID)
-
-                BorrowBook(bookISBN, studentId, borrowDate, dueDate, librarianId)
+                If CanBorrowBook(studentId, bookISBN) Then
+                    ' Proceed to borrow the book
+                    ' (Insert borrow record in the Borrows table)
+                    If BorrowBook(bookISBN, studentId, borrowDate, dueDate, librarianId) Then
+                        MessageBox.Show("Book(s) borrowed successfully.")
+                    End If
+                Else
+                    MessageBox.Show("The student has already borrowed this book and has not returned it.")
+                End If
             End If
         Next
 
+    End Sub
+
+    Private Sub ReturnBookButton_Click(sender As Object, e As EventArgs) Handles ReturnBookButton.Click
+        For Each row As DataGridViewRow In ScannerDataTable.Rows
+            ' Skip the new row if it's a new row being added
+            If Not row.IsNewRow Then
+                Dim isbnValue As String = row.Cells("ISBN").Value.ToString()
+                ' Assume values are obtained from form fields or user inputs
+                Dim studentId As Integer = Integer.Parse(ReturnStudentIdTextBox.Text)
+                Dim returnDate As Date = DateTime.Now
+
+                If ReturnBook(isbnValue, studentId, returnDate) Then
+                    MessageBox.Show("Book(s) returned successfully.")
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Sub DeleteBookButton_Click(sender As Object, e As EventArgs) Handles DeleteBookButton.Click
+        DeleteSelectedRow()
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        If currentDataTable IsNot Nothing Then
+            currentDataTable.Clear()
+            ScannerDataTable.DataSource = currentDataTable
+        End If
     End Sub
 End Class

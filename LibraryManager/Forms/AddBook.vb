@@ -8,9 +8,15 @@ Public Class AddBookDialog
     Private Function AuthorDataCleaner(data As String)
         Dim result As String = Nothing
 
-        Dim strings As String() = data.Trim.Split(";")
+        Dim strings As String() = data.Trim.Split(",")
+        Dim index = 0
         For Each item In strings
-            result += item.Trim & ";"
+            index += 1
+            If index = strings.Count - 1 Then
+                result += item
+            Else
+                result += item.Trim & ","
+            End If
         Next
 
         Return result
@@ -71,30 +77,12 @@ Public Class AddBookDialog
 
     Private Sub UpdateBookQuantity()
         Dim isbn = ISBNTextBox.Text
-        Dim quantityValue As Integer = Quantity.Value
-        Dim query = "update Books set Quantity=@quantity where ISBN=@isbn"
-        Dim selectQuery = "select Quantity from Books where ISBN=@isbn"
-        Using connection As New SqlConnection(connString)
-            Using command As New SqlCommand(selectQuery, connection)
-                Try
-                    connection.Open()
-                    command.Parameters.AddWithValue("@isbn", isbn)
-                    Dim reader As SqlDataReader = command.ExecuteReader()
-                    If reader.HasRows Then
-                        While reader.Read()
-                            quantityValue += Convert.ToInt32(reader("Quantity"))
-                        End While
-                    End If
-                Catch ex As Exception
-
-                End Try
-            End Using
-        End Using
+        Dim query = "update Books set Quantity=Quantity + @quantity where ISBN=@isbn"
         Using connection As New SqlConnection(connString)
             Using command As New SqlCommand(query, connection)
                 Try
                     connection.Open()
-                    command.Parameters.AddWithValue("@quantity", quantityValue)
+                    command.Parameters.AddWithValue("@quantity", Quantity.Text)
                     command.Parameters.AddWithValue("@isbn", isbn)
                     command.ExecuteNonQuery()
                     MessageBox.Show("Quantity updated.")
