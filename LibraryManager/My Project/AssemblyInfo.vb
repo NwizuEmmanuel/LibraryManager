@@ -9,11 +9,17 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("LibraryManager")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("LibraryManager")>
+<Assembly: AssemblyDescription(
+    "Authors:" & vbCrLf &
+    "Rochelle Ann De Leon" & vbCrLf &
+    "Onyeka Nwizu" & vbCrLf &
+    "Dustin Poyaoan" & vbCrLf &
+    "Chukwuemela Uzokwe"
+    )>
+<Assembly: AssemblyCompany("Sys Manager")>
+<Assembly: AssemblyProduct("Library Manager")>
 <Assembly: AssemblyCopyright("Copyright ©  2024")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("LM")>
 
 <Assembly: ComVisible(False)>
 

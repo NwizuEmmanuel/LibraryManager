@@ -146,4 +146,55 @@ Public Class MainMenu
         End If
     End Sub
 
+    Private Sub BorrowBook(isbnValue As String, studentId As Integer, borrowDate As Date, dueDate As Date, librarianId As Integer)
+        Using connection As New SqlConnection(connectionString)
+            Using command As New SqlCommand(
+            "INSERT INTO Borrows (BookId, StudentId, BorrowDate, DueDate, LibrarianId) " &
+            "VALUES ((SELECT BookId FROM Books WHERE ISBN=@isbn), @StudentId, @BorrowDate, @DueDate, @LibrarianId);", connection)
+
+                ' Set parameters
+                command.Parameters.AddWithValue("@isbn", isbnValue)
+                command.Parameters.AddWithValue("@StudentId", studentId)
+                command.Parameters.AddWithValue("@BorrowDate", borrowDate)
+                command.Parameters.AddWithValue("@DueDate", dueDate)
+                command.Parameters.AddWithValue("@LibrarianId", librarianId)
+
+                Try
+                    connection.Open()
+                    command.ExecuteNonQuery()
+                    MessageBox.Show("Book borrowed successfully.")
+                Catch ex As Exception
+                    MessageBox.Show("Error while borrowing the book: " & ex.Message)
+                End Try
+            End Using
+            Using command As New SqlCommand("UPDATE Books SET Quantity=Quantity - 1 WHERE ISBN=@isbn", connection)
+                Try
+                    command.Parameters.AddWithValue("@isbn", isbnValue)
+                    command.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show("Error while borrowing the book: " & ex.Message)
+                End Try
+            End Using
+        End Using
+    End Sub
+
+    Private Sub BorrowBookButton_Click(sender As Object, e As EventArgs) Handles BorrowBookButton.Click
+        ' Loop through each row in the DataGridView
+        For Each row As DataGridViewRow In ScannerDataTable.Rows
+            ' Skip the new row if it's a new row being added
+            If Not row.IsNewRow Then
+                ' Access the value in the specified column
+                Dim isbnValue As String = row.Cells("ISBN").Value.ToString()
+
+                Dim bookISBN = isbnValue
+                Dim studentId As Integer = Integer.Parse(StudentIDTextbox.Text)
+                Dim borrowDate As Date = DateTime.Now
+                Dim dueDate As Date = borrowDate.AddDays(DueDateComboBox.Text)
+                Dim librarianId As Integer = Integer.Parse(Whoami.ID)
+
+                BorrowBook(bookISBN, studentId, borrowDate, dueDate, librarianId)
+            End If
+        Next
+
+    End Sub
 End Class

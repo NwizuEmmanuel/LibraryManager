@@ -134,12 +134,16 @@ Public Class AddBookDialog
             CategoryComboBox.Enabled = False
             PublisherComboBox.Enabled = False
             PubDateMonthCalendar.Enabled = False
+            PubDateMonthCalendar.Visible = False
+            PublisherDateLabel.Visible = False
         Else
             BookTitleTextBox.Enabled = True
             AuthorTextBox.Enabled = True
             CategoryComboBox.Enabled = True
             PublisherComboBox.Enabled = True
             PubDateMonthCalendar.Enabled = True
+            PubDateMonthCalendar.Visible = True
+            PublisherDateLabel.Visible = True
         End If
     End Sub
 End Class

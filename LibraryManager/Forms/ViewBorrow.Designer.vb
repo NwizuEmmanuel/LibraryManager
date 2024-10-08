@@ -23,8 +23,12 @@ Partial Class ViewBorrow
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BorrowPanel = New System.Windows.Forms.Panel()
-        Me.RefreshLabel = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.SearchTextBox = New System.Windows.Forms.TextBox()
         Me.SearchLabel = New System.Windows.Forms.Label()
@@ -32,6 +36,7 @@ Partial Class ViewBorrow
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.BorrowPanel.SuspendLayout()
         CType(Me.BorrowDataTable, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -40,68 +45,96 @@ Partial Class ViewBorrow
         '
         'BorrowPanel
         '
-        Me.BorrowPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(3, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(196, Byte), Integer))
-        Me.BorrowPanel.Controls.Add(Me.RefreshLabel)
+        Me.BorrowPanel.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.BorrowPanel.Controls.Add(Me.Button1)
         Me.BorrowPanel.Controls.Add(Me.LinkLabel1)
         Me.BorrowPanel.Controls.Add(Me.SearchTextBox)
         Me.BorrowPanel.Controls.Add(Me.SearchLabel)
         Me.BorrowPanel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.BorrowPanel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.BorrowPanel.Location = New System.Drawing.Point(4, 4)
         Me.BorrowPanel.Margin = New System.Windows.Forms.Padding(4)
         Me.BorrowPanel.Name = "BorrowPanel"
-        Me.BorrowPanel.Size = New System.Drawing.Size(646, 63)
+        Me.BorrowPanel.Size = New System.Drawing.Size(564, 67)
         Me.BorrowPanel.TabIndex = 0
-        '
-        'RefreshLabel
-        '
-        Me.RefreshLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.RefreshLabel.AutoSize = True
-        Me.RefreshLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RefreshLabel.LinkColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.RefreshLabel.Location = New System.Drawing.Point(306, 34)
-        Me.RefreshLabel.Name = "RefreshLabel"
-        Me.RefreshLabel.Size = New System.Drawing.Size(45, 15)
-        Me.RefreshLabel.TabIndex = 10
-        Me.RefreshLabel.TabStop = True
-        Me.RefreshLabel.Text = "refresh"
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(9, 242)
+        Me.LinkLabel1.Location = New System.Drawing.Point(8, 257)
         Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(87, 16)
+        Me.LinkLabel1.Size = New System.Drawing.Size(85, 17)
         Me.LinkLabel1.TabIndex = 6
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Refresh table"
         '
         'SearchTextBox
         '
-        Me.SearchTextBox.Location = New System.Drawing.Point(12, 27)
+        Me.SearchTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.SearchTextBox.Location = New System.Drawing.Point(10, 29)
         Me.SearchTextBox.Name = "SearchTextBox"
-        Me.SearchTextBox.Size = New System.Drawing.Size(288, 22)
+        Me.SearchTextBox.Size = New System.Drawing.Size(252, 25)
         Me.SearchTextBox.TabIndex = 2
         '
         'SearchLabel
         '
         Me.SearchLabel.AutoSize = True
-        Me.SearchLabel.Font = New System.Drawing.Font("Palatino Linotype", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.SearchLabel.Location = New System.Drawing.Point(9, 4)
+        Me.SearchLabel.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.SearchLabel.Location = New System.Drawing.Point(8, 4)
         Me.SearchLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SearchLabel.Name = "SearchLabel"
-        Me.SearchLabel.Size = New System.Drawing.Size(123, 20)
+        Me.SearchLabel.Size = New System.Drawing.Size(104, 17)
         Me.SearchLabel.TabIndex = 1
         Me.SearchLabel.Text = "Search ISBN/title"
         '
         'BorrowDataTable
         '
-        Me.BorrowDataTable.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Coral
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke
+        Me.BorrowDataTable.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.BorrowDataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.BorrowDataTable.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(136, Byte), Integer))
+        Me.BorrowDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Coral
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.WhiteSmoke
+        Me.BorrowDataTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.BorrowDataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Coral
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.BorrowDataTable.DefaultCellStyle = DataGridViewCellStyle3
         Me.BorrowDataTable.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BorrowDataTable.Location = New System.Drawing.Point(3, 74)
+        Me.BorrowDataTable.GridColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(175, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.BorrowDataTable.Location = New System.Drawing.Point(3, 78)
         Me.BorrowDataTable.Name = "BorrowDataTable"
-        Me.BorrowDataTable.Size = New System.Drawing.Size(648, 477)
+        Me.BorrowDataTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Coral
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.WhiteSmoke
+        Me.BorrowDataTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Coral
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.WhiteSmoke
+        Me.BorrowDataTable.RowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.BorrowDataTable.Size = New System.Drawing.Size(566, 508)
         Me.BorrowDataTable.TabIndex = 1
         '
         'TableLayoutPanel2
@@ -116,7 +149,7 @@ Partial Class ViewBorrow
         Me.TableLayoutPanel2.RowCount = 2
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(654, 554)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(572, 589)
         Me.TableLayoutPanel2.TabIndex = 1
         '
         'ContextMenuStrip1
@@ -131,13 +164,25 @@ Partial Class ViewBorrow
         Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.SlateBlue
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Button1.Location = New System.Drawing.Point(268, 25)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(76, 31)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Refresh"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
         'ViewBorrow
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(654, 554)
+        Me.ClientSize = New System.Drawing.Size(572, 589)
         Me.Controls.Add(Me.TableLayoutPanel2)
-        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "ViewBorrow"
         Me.Text = "ViewBorrow"
@@ -155,7 +200,7 @@ Partial Class ViewBorrow
     Friend WithEvents BorrowDataTable As DataGridView
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
-    Friend WithEvents RefreshLabel As LinkLabel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Button1 As Button
 End Class

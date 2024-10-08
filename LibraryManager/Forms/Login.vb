@@ -35,6 +35,7 @@ Public Class Login
                             Whoami.Firstname = reader("FirstName")
                             Whoami.Lastname = reader("LastName")
                             Whoami.PhoneNumber = reader("PhoneNumber")
+                            Whoami.ID = reader("LibrarianId")
                         End While
                         Me.Hide()
                         MainMenu.Show()
@@ -58,4 +59,5 @@ Public Class Login
     Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
 End Class

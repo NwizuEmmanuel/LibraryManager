@@ -65,7 +65,7 @@ Public Class ViewBorrow
         End Using
     End Sub
 
-    Private Sub RefreshLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles RefreshLabel.LinkClicked
+    Private Sub RefreshLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
         LoadDataTable()
     End Sub
 
@@ -143,5 +143,9 @@ Public Class ViewBorrow
 
     Private Sub SearchTextBox_TextChanged(sender As Object, e As EventArgs) Handles SearchTextBox.TextChanged
         SearchAction()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        LoadDataTable()
     End Sub
 End Class
