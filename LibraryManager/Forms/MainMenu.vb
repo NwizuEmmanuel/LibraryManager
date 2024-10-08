@@ -5,6 +5,13 @@ Imports System.Data.SqlClient
 Public Class MainMenu
     Dim connectionString = ConfigurationManager.ConnectionStrings("MyConnectionString").ConnectionString
 
+    Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
+        WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
+        BarcodeTextBox.Focus()
+        ScannerDataTable.ReadOnly = True
+        ScannerDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+    End Sub
+
     Private Sub MainMenu_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         Application.Exit()
     End Sub
@@ -37,8 +44,30 @@ Public Class MainMenu
         ViewLibrarian.ShowDialog()
     End Sub
 
+    Private Function IsDuplicateInGridView(ByVal columnName As String, ByVal valueToCheck As String) As Boolean
+        ' Loop through each row in the DataGridView
+        For Each row As DataGridViewRow In ScannerDataTable.Rows
+            ' Skip the new row if it's a new row being added (to avoid errors)
+            If Not row.IsNewRow Then
+                ' Check if the value in the specified column matches the value to check
+                If row.Cells(columnName).Value IsNot Nothing AndAlso row.Cells(columnName).Value.ToString() = valueToCheck Then
+                    Return True ' Duplicate found
+                End If
+            End If
+        Next
+        Return False ' No duplicate found
+    End Function
+
+
     Private Sub AddBook()
         Dim bookisbnCode As String = BarcodeTextBox.Text
+
+        ' Check if the ISBN already exists in the DataGridView
+        If IsDuplicateInGridView("ISBN", bookisbnCode) Then
+            MessageBox.Show("This book with ISBN already exists in the list.")
+            Exit Sub ' Stop further execution
+        End If
+
         Dim newTable As New DataTable()
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand(
@@ -60,7 +89,9 @@ Public Class MainMenu
                             currentDataTable.ImportRow(row)
                         Next
                     End If
-                    BarcodeTextBox.Clear()
+                    If Not ManualModeCheckBox.Checked Then
+                        BarcodeTextBox.Clear()
+                    End If
                 Catch ex As Exception
                     MessageBox.Show("Book not found. " & ex.Message)
                 End Try
@@ -68,75 +99,8 @@ Public Class MainMenu
         End Using
     End Sub
 
-    'Private Sub BorrowBook(isbn As String)
-    '    Dim today As DateTime = DateTime.Now
-
-    '    If String.IsNullOrEmpty(ISBNTextBox.Text) And String.IsNullOrEmpty(DueDateTextBox.Text) And String.IsNullOrEmpty(StudentPhoneNumberTextBox.Text) Then
-    '        MessageBox.Show("Enter book ISBN or due date or student phone number.")
-    '        Exit Sub
-    '    End If
-
-    '    Using connection As New SqlConnection(connectionString)
-    '        Using command As New SqlCommand(
-    '            "insert into Borrows (BookId,StudentId,BorrowDate,DueDate,LibrarianId)" &
-    '            "values ((select BookId from Books where ISBN=@isbn)," &
-    '            "(select StudentId from Students where PhoneNumber=@studentPhoneNumber),@todayDate,@dueDate," &
-    '            "(select LibrarianId from Librarians where PhoneNumber=@librarianPhoneNumber))",
-    '            connection)
-    '            Try
-    '                connection.Open()
-    '                command.Parameters.AddWithValue("@isbn", isbn)
-    '                command.Parameters.AddWithValue("@studentPhoneNumber", StudentPhoneNumberTextBox.Text)
-    '                command.Parameters.AddWithValue("@todayDate", today)
-    '                command.Parameters.AddWithValue("@dueDate", DueDateTextBox.Text)
-    '                command.Parameters.AddWithValue("@librarianPhoneNumber", Whoami.PhoneNumber)
-    '                command.ExecuteNonQuery()
-    '                MessageBox.Show("Book is Borrowed Successfully.")
-    '            Catch ex As Exception
-    '                MessageBox.Show(ex.Message)
-    '            End Try
-    '        End Using
-    '    End Using
-    'End Sub
-
-    Private Sub ReturnBook(isbn As String)
-        Dim todayDate = DateTime.Today
-
-        If String.IsNullOrEmpty(isbn) Then
-            MessageBox.Show("Enter a ISBN value.")
-            Exit Sub
-        End If
-
-        Dim result As DialogResult
-        result = MessageBox.Show("Are you sure of this return?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            Using connection As New SqlConnection(connectionString)
-                Using command As New SqlCommand(
-                    "UPDATE Borrows SET ReturnDate=@today WHERE BookId=" &
-                    "(SELECT [BookId] FROM [Books] WHERE ISBN=@isbn)",
-                    connection)
-                    Try
-                        connection.Open()
-                        command.Parameters.AddWithValue("@isbn", isbn)
-                        command.Parameters.AddWithValue("@today", todayDate)
-                        command.ExecuteNonQuery()
-                        MessageBox.Show("Book returned.")
-                        'LoadDataTable()
-                    Catch ex As Exception
-                        MessageBox.Show(ex.Message)
-                    End Try
-                End Using
-            End Using
-        End If
-    End Sub
     Private Sub BorrowedBookToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BorrowedBookToolStripMenuItem.Click
         ViewBorrow.ShowDialog()
-    End Sub
-
-    Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles Me.Load
-        WelcomeLabel.Text = $"Welcome, {Whoami.Firstname} {Whoami.Lastname}"
-        BarcodeTextBox.Focus()
-        ScannerDataTable.ReadOnly = True
     End Sub
 
     Private Sub BarcodeTextBox_TextChanged(sender As Object, e As EventArgs) Handles BarcodeTextBox.TextChanged

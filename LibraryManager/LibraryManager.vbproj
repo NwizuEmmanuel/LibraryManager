@@ -79,16 +79,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dialogs\AddLibrarian.Designer.vb">
+    <Compile Include="Forms\AddLibrarian.Designer.vb">
       <DependentUpon>AddLibrarian.vb</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AddLibrarian.vb">
+    <Compile Include="Forms\AddLibrarian.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\AddStudent.Designer.vb">
+    <Compile Include="Forms\AddStudent.Designer.vb">
       <DependentUpon>AddStudent.vb</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AddStudent.vb">
+    <Compile Include="Forms\AddStudent.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AboutBox.Designer.vb">
@@ -97,10 +97,10 @@
     <Compile Include="Forms\AboutBox.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\AddBook.Designer.vb">
+    <Compile Include="Forms\AddBook.Designer.vb">
       <DependentUpon>AddBook.vb</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\AddBook.vb">
+    <Compile Include="Forms\AddBook.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Login.Designer.vb">
@@ -158,16 +158,16 @@
     <Compile Include="Whoami.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Dialogs\AddLibrarian.resx">
+    <EmbeddedResource Include="Forms\AddLibrarian.resx">
       <DependentUpon>AddLibrarian.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\AddStudent.resx">
+    <EmbeddedResource Include="Forms\AddStudent.resx">
       <DependentUpon>AddStudent.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutBox.resx">
       <DependentUpon>AboutBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\AddBook.resx">
+    <EmbeddedResource Include="Forms\AddBook.resx">
       <DependentUpon>AddBook.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">

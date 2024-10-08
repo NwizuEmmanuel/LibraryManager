@@ -45,7 +45,7 @@ BEGIN
     );
 END
 
--- Loans Table
+-- Borrows Table
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Borrows' AND xtype = 'U')
 BEGIN
     CREATE TABLE [Borrows] (
