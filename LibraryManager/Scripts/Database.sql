@@ -1,6 +1,30 @@
-﻿-- Use the LibraryDB database
-USE [LibraryDB];
+﻿-- Should be deleted on production. from here
+USE [master]
+
+IF DB_ID('library_db') IS NULL CREATE DATABASE library_db;
+Go
+
+-- Use the LibraryDB database
+USE [library_db];
 GO
+
+-- Category Table
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Categories' AND xtype='U')
+BEGIN
+	CREATE TABLE [Categories](
+		[ID] INT IDENTITY(1,1) PRIMARY KEY,
+		[Name] NVARCHAR(225)
+	);
+END
+
+-- Publisher Table
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Publishers' AND xtype='U')
+BEGIN
+	CREATE TABLE [Publishers](
+		[ID] INT IDENTITY(1,1) PRIMARY KEY,
+		[Name] NVARCHAR(225)
+	);
+END
 
 -- Books Table
 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name = 'Books' AND xtype = 'U')
@@ -8,11 +32,14 @@ BEGIN
     CREATE TABLE [Books] (
         [BookId] INT IDENTITY(1,1) PRIMARY KEY,
         [Title] VARCHAR(255) NOT NULL,
-        [ISBN] VARCHAR(13) NOT NULL,
+        [ISBN] VARCHAR(13) NOT NULL UNIQUE,
 		[Authors] VARCHAR(255) NOT NULL,
-        [Category] VARCHAR(255) NOT NULL,
-        [Publisher] VARCHAR(255) NOT NULL,
-        [PublishedDate] DATE NOT NULL
+        [CategoryID] INT NOT NULL,
+        [PublisherID] INT NOT NULL,
+        [PublishedDate] DATE NOT NULL,
+		[Quantity] INT NOT NULL,
+		FOREIGN KEY ([PublisherID]) REFERENCES [Publishers]([ID]),
+		FOREIGN KEY ([CategoryID]) REFERENCES [Categories]([ID])
     );
 END
 
@@ -61,7 +88,16 @@ BEGIN
     );
 END
 
+ALTER TABLE Borrows
+ADD CONSTRAINT UQ_Student_Book UNIQUE (BookId, StudentId, ReturnDate);
+GO
+
 INSERT INTO [Librarians]([FirstName],[LastName],[Email],[PhoneNumber],[Password])
 VALUES ('Emmanuel','Okoro','emmanuel.okoro@yahoo.com','123-234','passowrd123'),
 ('Lindy','Chukwuemela','lindy.chukwuemela@icloud.com','234-222','password234')
+GO
+
+INSERT INTO [Librarians]([FirstName],[LastName],[Email],[PhoneNumber],[Password])
+VALUES
+('Mike','Obi','mike.obi@mail.com','234-222','mike@obi')
 GO
