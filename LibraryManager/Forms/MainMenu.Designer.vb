@@ -441,19 +441,19 @@ Partial Class MainMenu
         'NewBookToolStripMenuItem
         '
         Me.NewBookToolStripMenuItem.Name = "NewBookToolStripMenuItem"
-        Me.NewBookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewBookToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.NewBookToolStripMenuItem.Text = "New Book"
         '
         'NewStudentToolStripMenuItem
         '
         Me.NewStudentToolStripMenuItem.Name = "NewStudentToolStripMenuItem"
-        Me.NewStudentToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewStudentToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.NewStudentToolStripMenuItem.Text = "New Student"
         '
         'NewLibrarianToolStripMenuItem
         '
         Me.NewLibrarianToolStripMenuItem.Name = "NewLibrarianToolStripMenuItem"
-        Me.NewLibrarianToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NewLibrarianToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.NewLibrarianToolStripMenuItem.Text = "New Librarian"
         '
         'EditToolStripMenuItem
@@ -468,19 +468,19 @@ Partial Class MainMenu
         'UpdateStudentToolStripMenuItem
         '
         Me.UpdateStudentToolStripMenuItem.Name = "UpdateStudentToolStripMenuItem"
-        Me.UpdateStudentToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UpdateStudentToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.UpdateStudentToolStripMenuItem.Text = "Student"
         '
         'BookToolStripMenuItem
         '
         Me.BookToolStripMenuItem.Name = "BookToolStripMenuItem"
-        Me.BookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BookToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.BookToolStripMenuItem.Text = "Book"
         '
         'LibrarianToolStripMenuItem
         '
         Me.LibrarianToolStripMenuItem.Name = "LibrarianToolStripMenuItem"
-        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.LibrarianToolStripMenuItem.Text = "Librarian"
         '
         'BorrowsToolStripMenuItem
@@ -495,7 +495,7 @@ Partial Class MainMenu
         'BorrowedBookToolStripMenuItem
         '
         Me.BorrowedBookToolStripMenuItem.Name = "BorrowedBookToolStripMenuItem"
-        Me.BorrowedBookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BorrowedBookToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.BorrowedBookToolStripMenuItem.Text = "Borrowed Book"
         '
         'BarcodeGeneratorToolStripMenuItem

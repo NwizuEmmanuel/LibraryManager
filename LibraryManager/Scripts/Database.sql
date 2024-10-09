@@ -63,7 +63,7 @@ BEGIN
     );
 END
 
-INSERT INTO [Librarians]([FirstName],[LastName],[Email],[PhoneNumber],[Password])
-VALUES ('Emmanuel','Okoro','emmanuel.okoro@yahoo.com','123-234','passowrd123'),
-('Lindy','Chukwuemela','lindy.chukwuemela@icloud.com','234-222','password234')
+INSERT INTO [Librarians]([FirstName],[LastName],[Email],[PhoneNumber],[Password],[Role])
+VALUES ('Emmanuel','Okoro','emmanuel.okoro@yahoo.com','123-234','passowrd123', 'user'),
+('Lindy','Chukwuemela','lindy.chukwuemela@icloud.com','234-222','password234','admin')
 GO
