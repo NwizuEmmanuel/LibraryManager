@@ -46,9 +46,12 @@ Partial Class MainMenu
         Me.BarcodeTextBox = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.ClearButton = New System.Windows.Forms.Button()
         Me.DeleteBookButton = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ReturnStudentIdTextBox = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.ReturnBookButton = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -58,9 +61,8 @@ Partial Class MainMenu
         Me.Label4 = New System.Windows.Forms.Label()
         Me.StudentIDTextbox = New System.Windows.Forms.TextBox()
         Me.DueDateComboBox = New System.Windows.Forms.ComboBox()
-        Me.ClearButton = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ReturnStudentIdTextBox = New System.Windows.Forms.TextBox()
+        Me.BarcodeGeneratorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -76,7 +78,7 @@ Partial Class MainMenu
         'MenuStrip1
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.BorrowsToolStripMenuItem, Me.AboutToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.BorrowsToolStripMenuItem, Me.BarcodeGeneratorToolStripMenuItem, Me.ReportToolStripMenuItem, Me.AboutToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(776, 25)
@@ -118,19 +120,19 @@ Partial Class MainMenu
         'UpdateStudentToolStripMenuItem
         '
         Me.UpdateStudentToolStripMenuItem.Name = "UpdateStudentToolStripMenuItem"
-        Me.UpdateStudentToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.UpdateStudentToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateStudentToolStripMenuItem.Text = "Student"
         '
         'BookToolStripMenuItem
         '
         Me.BookToolStripMenuItem.Name = "BookToolStripMenuItem"
-        Me.BookToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.BookToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BookToolStripMenuItem.Text = "Book"
         '
         'LibrarianToolStripMenuItem
         '
         Me.LibrarianToolStripMenuItem.Name = "LibrarianToolStripMenuItem"
-        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
+        Me.LibrarianToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.LibrarianToolStripMenuItem.Text = "Librarian"
         '
         'BorrowsToolStripMenuItem
@@ -291,6 +293,20 @@ Partial Class MainMenu
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Delete Section"
         '
+        'ClearButton
+        '
+        Me.ClearButton.BackColor = System.Drawing.Color.SlateBlue
+        Me.ClearButton.FlatAppearance.BorderSize = 0
+        Me.ClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ClearButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ClearButton.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.ClearButton.Location = New System.Drawing.Point(92, 45)
+        Me.ClearButton.Name = "ClearButton"
+        Me.ClearButton.Size = New System.Drawing.Size(76, 31)
+        Me.ClearButton.TabIndex = 3
+        Me.ClearButton.Text = "Clear"
+        Me.ClearButton.UseVisualStyleBackColor = False
+        '
         'DeleteBookButton
         '
         Me.DeleteBookButton.BackColor = System.Drawing.Color.SlateBlue
@@ -330,6 +346,26 @@ Partial Class MainMenu
         Me.GroupBox2.TabIndex = 9
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Return Section"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(6, 44)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(68, 17)
+        Me.Label7.TabIndex = 7
+        Me.Label7.Text = "Student ID"
+        '
+        'ReturnStudentIdTextBox
+        '
+        Me.ReturnStudentIdTextBox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ReturnStudentIdTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.ReturnStudentIdTextBox.Location = New System.Drawing.Point(9, 64)
+        Me.ReturnStudentIdTextBox.Name = "ReturnStudentIdTextBox"
+        Me.ReturnStudentIdTextBox.Size = New System.Drawing.Size(167, 25)
+        Me.ReturnStudentIdTextBox.TabIndex = 6
         '
         'Label6
         '
@@ -441,39 +477,17 @@ Partial Class MainMenu
         Me.DueDateComboBox.Size = New System.Drawing.Size(167, 25)
         Me.DueDateComboBox.TabIndex = 2
         '
-        'ClearButton
+        'BarcodeGeneratorToolStripMenuItem
         '
-        Me.ClearButton.BackColor = System.Drawing.Color.SlateBlue
-        Me.ClearButton.FlatAppearance.BorderSize = 0
-        Me.ClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ClearButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ClearButton.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.ClearButton.Location = New System.Drawing.Point(92, 45)
-        Me.ClearButton.Name = "ClearButton"
-        Me.ClearButton.Size = New System.Drawing.Size(76, 31)
-        Me.ClearButton.TabIndex = 3
-        Me.ClearButton.Text = "Clear"
-        Me.ClearButton.UseVisualStyleBackColor = False
+        Me.BarcodeGeneratorToolStripMenuItem.Name = "BarcodeGeneratorToolStripMenuItem"
+        Me.BarcodeGeneratorToolStripMenuItem.Size = New System.Drawing.Size(131, 21)
+        Me.BarcodeGeneratorToolStripMenuItem.Text = "Barcode Generator"
         '
-        'Label7
+        'ReportToolStripMenuItem
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(6, 44)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(68, 17)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Student ID"
-        '
-        'ReturnStudentIdTextBox
-        '
-        Me.ReturnStudentIdTextBox.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ReturnStudentIdTextBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.ReturnStudentIdTextBox.Location = New System.Drawing.Point(9, 64)
-        Me.ReturnStudentIdTextBox.Name = "ReturnStudentIdTextBox"
-        Me.ReturnStudentIdTextBox.Size = New System.Drawing.Size(167, 25)
-        Me.ReturnStudentIdTextBox.TabIndex = 6
+        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(60, 21)
+        Me.ReportToolStripMenuItem.Text = "Report"
         '
         'MainMenu
         '
@@ -548,4 +562,6 @@ Partial Class MainMenu
     Friend WithEvents ClearButton As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents ReturnStudentIdTextBox As TextBox
+    Friend WithEvents BarcodeGeneratorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReportToolStripMenuItem As ToolStripMenuItem
 End Class

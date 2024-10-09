@@ -1,5 +1,5 @@
 ﻿-- Use the LibraryDB database
-USE [LibraryDB];
+USE [library_db];
 GO
 
 -- Books Table

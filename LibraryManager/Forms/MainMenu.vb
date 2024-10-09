@@ -91,9 +91,7 @@ Public Class MainMenu
                             currentDataTable.ImportRow(row)
                         Next
                     End If
-                    If Not ManualModeCheckBox.Checked Then
-                        BarcodeTextBox.Clear()
-                    End If
+
                 Catch ex As Exception
                     MessageBox.Show("Book not found. " & ex.Message)
                 End Try
@@ -302,5 +300,9 @@ Public Class MainMenu
             currentDataTable.Clear()
             ScannerDataTable.DataSource = currentDataTable
         End If
+    End Sub
+
+    Private Sub BarcodeGeneratorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarcodeGeneratorToolStripMenuItem.Click
+        Barcode.ShowDialog()
     End Sub
 End Class
