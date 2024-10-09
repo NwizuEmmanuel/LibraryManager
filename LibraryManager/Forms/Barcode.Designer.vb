@@ -22,9 +22,9 @@ Partial Class Barcode
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BookFormTableLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GenerateButton = New System.Windows.Forms.Button()
@@ -56,6 +56,8 @@ Partial Class Barcode
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel1.BackgroundImage = Global.LibraryManager.My.Resources.Resources._1
+        Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel1.Controls.Add(Me.GenerateButton)
         Me.Panel1.Controls.Add(Me.RefreshButton)
         Me.Panel1.Controls.Add(Me.SearchTextBox)
@@ -69,10 +71,11 @@ Partial Class Barcode
         '
         'GenerateButton
         '
-        Me.GenerateButton.BackColor = System.Drawing.Color.SlateBlue
+        Me.GenerateButton.BackColor = System.Drawing.Color.LightSlateGray
         Me.GenerateButton.FlatAppearance.BorderSize = 0
         Me.GenerateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GenerateButton.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.GenerateButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GenerateButton.ForeColor = System.Drawing.Color.Black
         Me.GenerateButton.Location = New System.Drawing.Point(308, 42)
         Me.GenerateButton.Name = "GenerateButton"
         Me.GenerateButton.Size = New System.Drawing.Size(76, 31)
@@ -82,10 +85,10 @@ Partial Class Barcode
         '
         'RefreshButton
         '
-        Me.RefreshButton.BackColor = System.Drawing.Color.SlateBlue
+        Me.RefreshButton.BackColor = System.Drawing.Color.LightSlateGray
         Me.RefreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.RefreshButton.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RefreshButton.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.RefreshButton.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RefreshButton.ForeColor = System.Drawing.Color.Black
         Me.RefreshButton.Location = New System.Drawing.Point(226, 42)
         Me.RefreshButton.Name = "RefreshButton"
         Me.RefreshButton.Size = New System.Drawing.Size(76, 31)
@@ -103,39 +106,40 @@ Partial Class Barcode
         'SearchBookLabel
         '
         Me.SearchBookLabel.AutoSize = True
-        Me.SearchBookLabel.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SearchBookLabel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.SearchBookLabel.BackColor = System.Drawing.Color.Transparent
+        Me.SearchBookLabel.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchBookLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.SearchBookLabel.Location = New System.Drawing.Point(4, 19)
         Me.SearchBookLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SearchBookLabel.Name = "SearchBookLabel"
-        Me.SearchBookLabel.Size = New System.Drawing.Size(86, 17)
+        Me.SearchBookLabel.Size = New System.Drawing.Size(86, 18)
         Me.SearchBookLabel.TabIndex = 0
         Me.SearchBookLabel.Text = "Search Books"
         '
         'BookTableView
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(97, Byte), Integer))
-        Me.BookTableView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle16.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(97, Byte), Integer))
+        Me.BookTableView.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
         Me.BookTableView.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(178, Byte), Integer), CType(CType(172, Byte), Integer), CType(CType(136, Byte), Integer))
         Me.BookTableView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.BookTableView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Coral
-        Me.BookTableView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Coral
+        Me.BookTableView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
         Me.BookTableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.WhiteSmoke
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Coral
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.BookTableView.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.WhiteSmoke
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.Coral
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.BookTableView.DefaultCellStyle = DataGridViewCellStyle18
         Me.BookTableView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BookTableView.GridColor = System.Drawing.Color.FromArgb(CType(CType(212, Byte), Integer), CType(CType(175, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.BookTableView.Location = New System.Drawing.Point(4, 95)

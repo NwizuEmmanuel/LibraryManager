@@ -8,11 +8,12 @@ BEGIN
     CREATE TABLE [Books] (
         [BookId] INT IDENTITY(1,1) PRIMARY KEY,
         [Title] VARCHAR(255) NOT NULL,
-        [ISBN] VARCHAR(13) NOT NULL,
+        [ISBN] VARCHAR(13) NOT NULL UNIQUE,
 		[Authors] VARCHAR(255) NOT NULL,
         [Category] VARCHAR(255) NOT NULL,
         [Publisher] VARCHAR(255) NOT NULL,
-        [PublishedDate] DATE NOT NULL
+        [PublishedDate] DATE NOT NULL,
+		[Quantity] int default 1
     );
 END
 
@@ -41,6 +42,7 @@ BEGIN
         [Email] VARCHAR(100) UNIQUE NOT NULL,
         [PhoneNumber] VARCHAR(15) NOT NULL,
         [Password] VARCHAR(50) NOT NULL,
+		[Role] nvarchar(10) not null
     );
 END
 

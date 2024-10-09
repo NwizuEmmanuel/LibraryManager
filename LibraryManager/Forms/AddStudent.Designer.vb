@@ -26,6 +26,7 @@ Partial Class AddStudent
         Me.OK_Button = New System.Windows.Forms.Button()
         Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.StudentIDTextBox = New System.Windows.Forms.TextBox()
         Me.AddressTextBox = New System.Windows.Forms.TextBox()
         Me.PhoneNumberTextBox = New System.Windows.Forms.TextBox()
         Me.EmailTextBox = New System.Windows.Forms.TextBox()
@@ -44,7 +45,6 @@ Partial Class AddStudent
         Me.MaleRadioButton = New System.Windows.Forms.RadioButton()
         Me.AddressLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.StudentIDTextBox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -54,6 +54,7 @@ Partial Class AddStudent
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Transparent
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -70,10 +71,11 @@ Partial Class AddStudent
         'OK_Button
         '
         Me.OK_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.OK_Button.BackColor = System.Drawing.Color.SlateBlue
+        Me.OK_Button.BackColor = System.Drawing.Color.LightSlateGray
         Me.OK_Button.FlatAppearance.BorderSize = 0
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OK_Button.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.OK_Button.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OK_Button.ForeColor = System.Drawing.Color.Black
         Me.OK_Button.Location = New System.Drawing.Point(4, 3)
         Me.OK_Button.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.OK_Button.Name = "OK_Button"
@@ -85,11 +87,12 @@ Partial Class AddStudent
         'Cancel_Button
         '
         Me.Cancel_Button.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Cancel_Button.BackColor = System.Drawing.Color.SlateBlue
+        Me.Cancel_Button.BackColor = System.Drawing.Color.LightSlateGray
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.FlatAppearance.BorderSize = 0
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Cancel_Button.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Cancel_Button.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Button.ForeColor = System.Drawing.Color.Black
         Me.Cancel_Button.Location = New System.Drawing.Point(89, 3)
         Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Cancel_Button.Name = "Cancel_Button"
@@ -100,6 +103,7 @@ Partial Class AddStudent
         '
         'TableLayoutPanel2
         '
+        Me.TableLayoutPanel2.BackColor = System.Drawing.Color.Transparent
         Me.TableLayoutPanel2.ColumnCount = 2
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.54813!))
@@ -120,6 +124,8 @@ Partial Class AddStudent
         Me.TableLayoutPanel2.Controls.Add(Me.AddressLabel, 0, 7)
         Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 1, 8)
+        Me.TableLayoutPanel2.Font = New System.Drawing.Font("Palatino Linotype", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TableLayoutPanel2.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(14, 16)
         Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
@@ -136,34 +142,44 @@ Partial Class AddStudent
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(541, 302)
         Me.TableLayoutPanel2.TabIndex = 1
         '
+        'StudentIDTextBox
+        '
+        Me.StudentIDTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.StudentIDTextBox.Location = New System.Drawing.Point(111, 3)
+        Me.StudentIDTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.StudentIDTextBox.Name = "StudentIDTextBox"
+        Me.StudentIDTextBox.Size = New System.Drawing.Size(426, 25)
+        Me.StudentIDTextBox.TabIndex = 15
+        '
         'AddressTextBox
         '
         Me.AddressTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.AddressTextBox.Location = New System.Drawing.Point(108, 237)
+        Me.AddressTextBox.Location = New System.Drawing.Point(111, 237)
         Me.AddressTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.AddressTextBox.Name = "AddressTextBox"
-        Me.AddressTextBox.Size = New System.Drawing.Size(429, 25)
+        Me.AddressTextBox.Size = New System.Drawing.Size(426, 25)
         Me.AddressTextBox.TabIndex = 13
         '
         'PhoneNumberTextBox
         '
         Me.PhoneNumberTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PhoneNumberTextBox.Location = New System.Drawing.Point(108, 206)
+        Me.PhoneNumberTextBox.Location = New System.Drawing.Point(111, 206)
         Me.PhoneNumberTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.PhoneNumberTextBox.Name = "PhoneNumberTextBox"
-        Me.PhoneNumberTextBox.Size = New System.Drawing.Size(429, 25)
+        Me.PhoneNumberTextBox.Size = New System.Drawing.Size(426, 25)
         Me.PhoneNumberTextBox.TabIndex = 12
         '
         'EmailTextBox
         '
         Me.EmailTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.EmailTextBox.Location = New System.Drawing.Point(108, 175)
+        Me.EmailTextBox.Location = New System.Drawing.Point(111, 175)
         Me.EmailTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.EmailTextBox.Name = "EmailTextBox"
-        Me.EmailTextBox.Size = New System.Drawing.Size(429, 25)
+        Me.EmailTextBox.Size = New System.Drawing.Size(426, 25)
         Me.EmailTextBox.TabIndex = 11
         '
         'FirstnameLabel
@@ -172,7 +188,7 @@ Partial Class AddStudent
         Me.FirstnameLabel.Location = New System.Drawing.Point(4, 31)
         Me.FirstnameLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.FirstnameLabel.Name = "FirstnameLabel"
-        Me.FirstnameLabel.Size = New System.Drawing.Size(76, 17)
+        Me.FirstnameLabel.Size = New System.Drawing.Size(80, 18)
         Me.FirstnameLabel.TabIndex = 0
         Me.FirstnameLabel.Text = "First Name*"
         '
@@ -182,7 +198,7 @@ Partial Class AddStudent
         Me.LastnameLabel.Location = New System.Drawing.Point(4, 62)
         Me.LastnameLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.LastnameLabel.Name = "LastnameLabel"
-        Me.LastnameLabel.Size = New System.Drawing.Size(75, 17)
+        Me.LastnameLabel.Size = New System.Drawing.Size(78, 18)
         Me.LastnameLabel.TabIndex = 1
         Me.LastnameLabel.Text = "Last Name*"
         '
@@ -192,7 +208,7 @@ Partial Class AddStudent
         Me.SexLabel.Location = New System.Drawing.Point(4, 93)
         Me.SexLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.SexLabel.Name = "SexLabel"
-        Me.SexLabel.Size = New System.Drawing.Size(33, 17)
+        Me.SexLabel.Size = New System.Drawing.Size(33, 18)
         Me.SexLabel.TabIndex = 2
         Me.SexLabel.Text = "Sex*"
         '
@@ -202,7 +218,7 @@ Partial Class AddStudent
         Me.DepartmentLabel.Location = New System.Drawing.Point(4, 141)
         Me.DepartmentLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.DepartmentLabel.Name = "DepartmentLabel"
-        Me.DepartmentLabel.Size = New System.Drawing.Size(82, 17)
+        Me.DepartmentLabel.Size = New System.Drawing.Size(85, 18)
         Me.DepartmentLabel.TabIndex = 3
         Me.DepartmentLabel.Text = "Department*"
         '
@@ -212,7 +228,7 @@ Partial Class AddStudent
         Me.EamilLabel.Location = New System.Drawing.Point(4, 172)
         Me.EamilLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.EamilLabel.Name = "EamilLabel"
-        Me.EamilLabel.Size = New System.Drawing.Size(39, 17)
+        Me.EamilLabel.Size = New System.Drawing.Size(42, 18)
         Me.EamilLabel.TabIndex = 4
         Me.EamilLabel.Text = "Email"
         '
@@ -222,7 +238,7 @@ Partial Class AddStudent
         Me.PhonenumberLabel.Location = New System.Drawing.Point(4, 203)
         Me.PhonenumberLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.PhonenumberLabel.Name = "PhonenumberLabel"
-        Me.PhonenumberLabel.Size = New System.Drawing.Size(96, 17)
+        Me.PhonenumberLabel.Size = New System.Drawing.Size(99, 18)
         Me.PhonenumberLabel.TabIndex = 5
         Me.PhonenumberLabel.Text = "Phone Number"
         '
@@ -230,30 +246,30 @@ Partial Class AddStudent
         '
         Me.FirstnameTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.FirstnameTextBox.Location = New System.Drawing.Point(108, 34)
+        Me.FirstnameTextBox.Location = New System.Drawing.Point(111, 34)
         Me.FirstnameTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.FirstnameTextBox.Name = "FirstnameTextBox"
-        Me.FirstnameTextBox.Size = New System.Drawing.Size(429, 25)
+        Me.FirstnameTextBox.Size = New System.Drawing.Size(426, 25)
         Me.FirstnameTextBox.TabIndex = 6
         '
         'LastnameTextBox
         '
         Me.LastnameTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LastnameTextBox.Location = New System.Drawing.Point(108, 65)
+        Me.LastnameTextBox.Location = New System.Drawing.Point(111, 65)
         Me.LastnameTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.LastnameTextBox.Name = "LastnameTextBox"
-        Me.LastnameTextBox.Size = New System.Drawing.Size(429, 25)
+        Me.LastnameTextBox.Size = New System.Drawing.Size(426, 25)
         Me.LastnameTextBox.TabIndex = 7
         '
         'DepartmentTextBox
         '
         Me.DepartmentTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DepartmentTextBox.Location = New System.Drawing.Point(108, 144)
+        Me.DepartmentTextBox.Location = New System.Drawing.Point(111, 144)
         Me.DepartmentTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DepartmentTextBox.Name = "DepartmentTextBox"
-        Me.DepartmentTextBox.Size = New System.Drawing.Size(429, 25)
+        Me.DepartmentTextBox.Size = New System.Drawing.Size(426, 25)
         Me.DepartmentTextBox.TabIndex = 8
         '
         'Panel1
@@ -262,10 +278,10 @@ Partial Class AddStudent
         Me.Panel1.Controls.Add(Me.FemaleRadioButton)
         Me.Panel1.Controls.Add(Me.MaleRadioButton)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(108, 96)
+        Me.Panel1.Location = New System.Drawing.Point(111, 96)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(429, 42)
+        Me.Panel1.Size = New System.Drawing.Size(426, 42)
         Me.Panel1.TabIndex = 9
         '
         'OthersRadioButton
@@ -275,7 +291,7 @@ Partial Class AddStudent
         Me.OthersRadioButton.Location = New System.Drawing.Point(128, 3)
         Me.OthersRadioButton.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.OthersRadioButton.Name = "OthersRadioButton"
-        Me.OthersRadioButton.Size = New System.Drawing.Size(65, 21)
+        Me.OthersRadioButton.Size = New System.Drawing.Size(67, 22)
         Me.OthersRadioButton.TabIndex = 2
         Me.OthersRadioButton.TabStop = True
         Me.OthersRadioButton.Text = "Others"
@@ -287,7 +303,7 @@ Partial Class AddStudent
         Me.FemaleRadioButton.Location = New System.Drawing.Point(58, 3)
         Me.FemaleRadioButton.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.FemaleRadioButton.Name = "FemaleRadioButton"
-        Me.FemaleRadioButton.Size = New System.Drawing.Size(67, 21)
+        Me.FemaleRadioButton.Size = New System.Drawing.Size(68, 22)
         Me.FemaleRadioButton.TabIndex = 1
         Me.FemaleRadioButton.Text = "Female"
         Me.FemaleRadioButton.UseVisualStyleBackColor = True
@@ -298,7 +314,7 @@ Partial Class AddStudent
         Me.MaleRadioButton.Location = New System.Drawing.Point(4, 3)
         Me.MaleRadioButton.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.MaleRadioButton.Name = "MaleRadioButton"
-        Me.MaleRadioButton.Size = New System.Drawing.Size(55, 21)
+        Me.MaleRadioButton.Size = New System.Drawing.Size(55, 22)
         Me.MaleRadioButton.TabIndex = 0
         Me.MaleRadioButton.Text = "Male"
         Me.MaleRadioButton.UseVisualStyleBackColor = True
@@ -309,7 +325,7 @@ Partial Class AddStudent
         Me.AddressLabel.Location = New System.Drawing.Point(4, 234)
         Me.AddressLabel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.AddressLabel.Name = "AddressLabel"
-        Me.AddressLabel.Size = New System.Drawing.Size(61, 17)
+        Me.AddressLabel.Size = New System.Drawing.Size(63, 18)
         Me.AddressLabel.TabIndex = 10
         Me.AddressLabel.Text = "Address*"
         '
@@ -319,27 +335,17 @@ Partial Class AddStudent
         Me.Label1.Location = New System.Drawing.Point(2, 0)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(73, 17)
+        Me.Label1.Size = New System.Drawing.Size(76, 18)
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Student ID*"
-        '
-        'StudentIDTextBox
-        '
-        Me.StudentIDTextBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.StudentIDTextBox.Location = New System.Drawing.Point(108, 3)
-        Me.StudentIDTextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.StudentIDTextBox.Name = "StudentIDTextBox"
-        Me.StudentIDTextBox.Size = New System.Drawing.Size(429, 25)
-        Me.StudentIDTextBox.TabIndex = 15
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(106, 265)
+        Me.Label2.Location = New System.Drawing.Point(109, 265)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(330, 17)
+        Me.Label2.Size = New System.Drawing.Size(334, 18)
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "Those marked with * are required, the rest are optional"
         '
@@ -349,6 +355,8 @@ Partial Class AddStudent
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.BackgroundImage = Global.LibraryManager.My.Resources.Resources._1
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(566, 386)
         Me.Controls.Add(Me.TableLayoutPanel2)

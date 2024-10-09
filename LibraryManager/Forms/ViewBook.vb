@@ -103,6 +103,7 @@ Public Class ViewBook
             Using adapter As New SqlDataAdapter(
                 "SELECT * FROM [Books] " &
                 "WHERE [Title] LIKE @text OR " &
+                "[ISBN] LIKE @text OR " &
                 "[Authors] LIKE @text OR " &
                 "[Publisher] LIKE @text OR " &
                 "[Category] LIKE @text", conn)

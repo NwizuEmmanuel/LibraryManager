@@ -15,41 +15,82 @@ Public Class Login
         Dim username = EmailTextBox.Text
         Dim password = PasswordTextBox.Text
 
-        Using connection As New SqlConnection(connString)
-            Dim query = "
-                SELECT [LibrarianId],[FirstName],[LastName],[PhoneNumber] FROM [Librarians] WHERE [Email]=@email AND
-                [Password]=@pass
+        If UserCheckBox.Checked Then
+            Using connection As New SqlConnection(connString)
+                Dim query = "
+                SELECT [LibrarianId],[FirstName],[LastName],[PhoneNumber],[Role] FROM [Librarians] WHERE [Email]=@email AND
+                [Password]=@pass and Role='user'
 "
-            Using command As New SqlCommand(query, connection)
-                Try
-                    connection.Open()
+                Using command As New SqlCommand(query, connection)
+                    Try
+                        connection.Open()
 
-                    command.Parameters.AddWithValue("@email", EmailTextBox.Text)
-                    command.Parameters.AddWithValue("@pass", PasswordTextBox.Text)
+                        command.Parameters.AddWithValue("@email", EmailTextBox.Text)
+                        command.Parameters.AddWithValue("@pass", PasswordTextBox.Text)
 
-                    Dim userCount As Integer = CInt(command.ExecuteScalar())
-                    Dim reader = command.ExecuteReader()
-                    If userCount > 0 Then
-                        ' Go to next form
-                        While reader.Read()
-                            Whoami.Firstname = reader("FirstName")
-                            Whoami.Lastname = reader("LastName")
-                            Whoami.PhoneNumber = reader("PhoneNumber")
-                            Whoami.ID = reader("LibrarianId")
-                        End While
-                        Me.Hide()
-                        MainMenu.Show()
-                    Else
-                        MessageBox.Show("User does not exists.")
-                    End If
+                        Dim userCount As Integer = CInt(command.ExecuteScalar())
+                        Dim reader = command.ExecuteReader()
+                        If userCount > 0 Then
+                            ' Go to next form
+                            While reader.Read()
+                                Whoami.Firstname = reader("FirstName")
+                                Whoami.Lastname = reader("LastName")
+                                Whoami.PhoneNumber = reader("PhoneNumber")
+                                Whoami.ID = reader("LibrarianId")
+                                Whoami.Role = reader("Role")
+                            End While
+                            Me.Hide()
+                            MainMenu.Show()
+                        Else
+                            MessageBox.Show("User does not exists.")
+                        End If
 
-                Catch ex As Exception
-                    MessageBox.Show("Error: " & ex.Message)
-                Finally
-                    connection.Close()
-                End Try
+                    Catch ex As Exception
+                        MessageBox.Show("Error: " & ex.Message)
+                    Finally
+                        connection.Close()
+                    End Try
+                End Using
             End Using
-        End Using
+        Else
+            Using connection As New SqlConnection(connString)
+                Dim query = "
+                SELECT [LibrarianId],[FirstName],[LastName],[PhoneNumber],[Role] FROM [Librarians] WHERE [Email]=@email AND
+                [Password]=@pass and Role='admin'
+"
+                Using command As New SqlCommand(query, connection)
+                    Try
+                        connection.Open()
+
+                        command.Parameters.AddWithValue("@email", EmailTextBox.Text)
+                        command.Parameters.AddWithValue("@pass", PasswordTextBox.Text)
+
+                        Dim userCount As Integer = CInt(command.ExecuteScalar())
+                        Dim reader = command.ExecuteReader()
+                        If userCount > 0 Then
+                            ' Go to next form
+                            While reader.Read()
+                                Whoami.Firstname = reader("FirstName")
+                                Whoami.Lastname = reader("LastName")
+                                Whoami.PhoneNumber = reader("PhoneNumber")
+                                Whoami.ID = reader("LibrarianId")
+                                Whoami.Role = reader("Role")
+                            End While
+                            Me.Hide()
+                            MainMenu.Show()
+                        Else
+                            MessageBox.Show("Admin does not exists. ")
+                        End If
+
+                    Catch ex As Exception
+                        MessageBox.Show("Error: " & ex.Message)
+                    Finally
+                        connection.Close()
+                    End Try
+                End Using
+            End Using
+        End If
+
     End Sub
 
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click

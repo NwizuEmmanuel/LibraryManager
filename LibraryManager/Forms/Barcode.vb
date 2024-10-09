@@ -114,8 +114,6 @@ Public Class Barcode
             End If
         End Using
 
-        ' Save the barcode as an image file
-        barcodeBitmap.Save("barcode.png", System.Drawing.Imaging.ImageFormat.Png)
     End Sub
 
 

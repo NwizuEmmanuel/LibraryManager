@@ -3,6 +3,7 @@
     Private Shared _lastname As String
     Private Shared _phoneNumber As String
     Private Shared _ID As Integer
+    Private Shared _role As String
 
     Public Shared Property Firstname() As String
         Get
@@ -37,6 +38,15 @@
         End Get
         Set(value As Integer)
             _ID = value
+        End Set
+    End Property
+
+    Public Shared Property Role As String
+        Get
+            Return _role
+        End Get
+        Set(value As String)
+            _role = value
         End Set
     End Property
 End Class

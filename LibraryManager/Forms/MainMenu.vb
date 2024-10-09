@@ -12,6 +12,11 @@ Public Class MainMenu
         BarcodeTextBox.Focus()
         ScannerDataTable.ReadOnly = True
         ScannerDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        If Whoami.Role = "admin" Then
+            MenuStrip1.Enabled = True
+        ElseIf Whoami.Role = "user" Then
+            MenuStrip1.Enabled = False
+        End If
     End Sub
 
     Private Sub MainMenu_Closed(sender As Object, e As EventArgs) Handles Me.Closed
@@ -151,7 +156,7 @@ Public Class MainMenu
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand(
             "INSERT INTO Borrows (BookId, StudentId, BorrowDate, DueDate, LibrarianId) " &
-            "VALUES ((SELECT BookId FROM Books WHERE ISBN=@isbn), @StudentId, @BorrowDate, @DueDate, @LibrarianId);", connection)
+            "VALUES ((SELECT BookId FROM Books WHERE ISBN=@isbn AND Quantity > 0), @StudentId, @BorrowDate, @DueDate, @LibrarianId);", connection)
 
                 ' Set parameters
                 command.Parameters.AddWithValue("@isbn", isbnValue)

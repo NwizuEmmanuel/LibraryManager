@@ -9,7 +9,7 @@ Public Class AddLibrarian
         Dim noError = True
         Using connection As New SqlConnection(connectionString)
             Using command As New SqlCommand(
-                "insert into [Librarians] (Firstname,Lastname,Email,PhoneNumber,Password) values (@fname,@lname,@email,@phone,@pass)",
+                "insert into [Librarians] (Firstname,Lastname,Email,PhoneNumber,Password,Role) values (@fname,@lname,@email,@phone,@pass,@role)",
                 connection)
                 connection.Open()
                 command.Parameters.AddWithValue("@fname", FirstnameTextBox.Text)
@@ -17,6 +17,7 @@ Public Class AddLibrarian
                 command.Parameters.AddWithValue("@email", EmailTextBox.Text)
                 command.Parameters.AddWithValue("@phone", PhonenumberMaskedTextBox.Text)
                 command.Parameters.AddWithValue("@pass", PasswordTextBox.Text)
+                command.Parameters.AddWithValue("role", RoleComboBox.Text)
                 Try
                     command.ExecuteNonQuery()
                 Catch ex As Exception
